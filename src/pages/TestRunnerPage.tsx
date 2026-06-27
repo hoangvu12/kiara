@@ -39,14 +39,21 @@ export function TestRunnerPage() {
     [answers, test]
   )
 
-  // The instruction banner follows the answering lens chosen on the intro.
-  const banner = useMemo(() => {
+  // The chosen answering lens drives both the instruction banner and any
+  // per-lens question wording (e.g. the "general" lens drops romantic phrasing).
+  const perspectiveId = useMemo(() => {
     if (!test) return undefined
     const pid = loadPerspective(test.id)
     const p =
       test.perspectives?.find((x) => x.id === pid) ?? test.perspectives?.[0]
-    return p?.instruction ?? test.instructions
+    return p?.id
   }, [test])
+
+  const banner = useMemo(() => {
+    if (!test) return undefined
+    const p = test.perspectives?.find((x) => x.id === perspectiveId)
+    return p?.instruction ?? test.instructions
+  }, [test, perspectiveId])
 
   if (!test) {
     return (
@@ -62,6 +69,10 @@ export function TestRunnerPage() {
   }
 
   const question = test.questions[index]
+  const questionText =
+    (perspectiveId &&
+      test.questionsByPerspective?.[perspectiveId]?.[question.id]) ||
+    question.text
   const currentValue = answers[question.id]
   const isLast = index === total - 1
 
@@ -115,7 +126,7 @@ export function TestRunnerPage() {
             {t.runner.question} {index + 1}
           </p>
           <h2 className="mt-2 text-2xl sm:text-3xl font-medium tracking-tight text-balance leading-snug min-h-[5rem]">
-            {question.text}
+            {questionText}
           </h2>
 
           <div className="mt-10">

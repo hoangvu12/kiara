@@ -205,6 +205,27 @@ export const en: TestContent = {
     avo17: "It's easy for me to be affectionate with my partner.",
     avo18: "My partner really understands me and my needs.",
   },
+  // Under the "general" lens, the items that hard-code "romantic partner" are
+  // reworded to the target-neutral "this person" (the ECR-RS phrasing), so the
+  // lens reads naturally for friends/family. All other items already say
+  // "partner", which the lens instruction tells the reader to read broadly.
+  questionsByPerspective: {
+    general: {
+      anx4: "I worry that this person won't care about me as much as I care about them.",
+      anx8: "When I show my feelings for this person, I'm afraid they will not feel the same about me.",
+      anx10: "This person makes me doubt myself.",
+      anx13: "Sometimes this person changes their feelings about me for no apparent reason.",
+      anx15: "I'm afraid that once this person gets to know me, they won't like who I really am.",
+      avo3: "I find it difficult to allow myself to depend on this person.",
+      avo4: "I am very comfortable being close to this person.",
+      avo5: "I don't feel comfortable opening up to this person.",
+      avo6: "I prefer not to be too close to this person.",
+      avo7: "I get uncomfortable when this person wants to be very close.",
+      avo11: "It helps to turn to this person in times of need.",
+      avo15: "I feel comfortable depending on this person.",
+      avo16: "I find it easy to depend on this person.",
+    },
+  },
   sources: [
     {
       label: "Fraley, Waller & Brennan (2000), the ECR-R measure (UIUC)",

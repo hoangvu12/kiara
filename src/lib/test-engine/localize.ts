@@ -49,6 +49,7 @@ export function resolveTest(
       id,
       ...(c.perspectives?.[id] ?? { label: id, instruction: "" }),
     })),
+    questionsByPerspective: c.questionsByPerspective,
     outcomes: Object.fromEntries(
       Object.entries(c.outcomes).map(([id, o]) => [id, { id, ...o }])
     ),

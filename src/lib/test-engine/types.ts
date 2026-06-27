@@ -130,6 +130,13 @@ export type TestDefinition = {
   quadrant?: QuadrantConfig
   /** Optional answering lenses (e.g. romantic vs. general relationships). */
   perspectives?: Perspective[]
+  /**
+   * Optional per-perspective question wording overrides:
+   * perspectiveId -> (questionId -> text). Items not listed keep their default
+   * `questions` text. Used so e.g. a "general" lens can drop romantic-specific
+   * phrasing on the few items that hard-code it. Scoring is unaffected.
+   */
+  questionsByPerspective?: Record<string, Record<string, string>>
   /** Pure scoring function: answers (questionId -> raw value) -> result. */
   score: (answers: Record<string, number>) => TestResult
 }
@@ -197,6 +204,12 @@ export type TestContent = {
   outcomes: Record<string, LocalizedOutcome>
   /** Keyed by question id. */
   questions: Record<string, string>
+  /**
+   * Optional per-perspective wording overrides: perspectiveId -> (questionId ->
+   * text). Lets a lens (e.g. "general") reword the few items that hard-code a
+   * romantic target. Items not listed fall back to `questions`.
+   */
+  questionsByPerspective?: Record<string, Record<string, string>>
   /** Optional per-locale source labels; falls back to the structure's sources. */
   sources?: Source[]
 }

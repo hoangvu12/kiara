@@ -210,6 +210,27 @@ export const vi: TestContent = {
     avo17: "Tôi dễ dàng thể hiện sự âu yếm với người ấy.",
     avo18: "Người ấy thật sự hiểu tôi và những nhu cầu của tôi.",
   },
+  // Với lăng kính "quan hệ thân thiết nói chung", những câu vốn ghi rõ "người
+  // yêu" được đổi thành "người ấy" trung tính (cách diễn đạt của ECR-RS), để
+  // bài test đọc tự nhiên với bạn thân hay gia đình. Các câu còn lại vốn đã
+  // dùng "người ấy" — phần hướng dẫn đã dặn hiểu chữ này theo nghĩa rộng.
+  questionsByPerspective: {
+    general: {
+      anx4: "Tôi lo rằng người ấy sẽ không quan tâm đến tôi nhiều như tôi quan tâm đến họ.",
+      anx8: "Khi tôi bày tỏ tình cảm với người ấy, tôi sợ rằng họ không cảm thấy như vậy với tôi.",
+      anx13: "Đôi khi người ấy thay đổi tình cảm với tôi mà không có lý do rõ ràng.",
+      anx15: "Tôi sợ rằng khi người ấy hiểu rõ tôi, họ sẽ không thích con người thật của tôi.",
+      avo3: "Tôi thấy khó để cho phép mình dựa vào người ấy.",
+      avo4: "Tôi thấy rất thoải mái khi gần gũi với người ấy.",
+      avo5: "Tôi thấy không thoải mái khi mở lòng với người ấy.",
+      avo6: "Tôi không thích quá gần gũi với người ấy.",
+      avo7: "Tôi thấy khó chịu khi người ấy muốn thật gần gũi.",
+      avo11: "Tìm đến người ấy những lúc cần giúp tôi thấy đỡ hơn.",
+      avo14: "Tôi thấy bất an khi người ấy trở nên quá gần gũi với tôi.",
+      avo15: "Tôi thấy thoải mái khi dựa vào người ấy.",
+      avo16: "Tôi thấy dễ dàng khi dựa vào người ấy.",
+    },
+  },
   sources: [
     {
       label: "Fraley, Waller & Brennan (2000), thước đo ECR-R (UIUC)",

@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kiara",
+  "compatibility_date": "2026-06-28",
+  // Static SPA: no Worker script. Serve the Vite build and fall back to
+  // index.html for client-side routes (/test/:slug, ?lang=vi, etc.).
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  // Worker is the origin for this subdomain; Cloudflare manages DNS + TLS.
+  // Requires nguyenvu.dev to be a zone on this Cloudflare account.
+  "routes": [{ "pattern": "kiara.nguyenvu.dev", "custom_domain": true }]
+}

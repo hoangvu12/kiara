@@ -20,6 +20,13 @@ export type LikertScale = {
   pointLabels?: string[]
 }
 
+/** One selectable answer in a multiple-choice (ability) item. */
+export type ChoiceOption = {
+  /** Stable id, e.g. "a". The stored answer is the 1-based index of this option. */
+  id: string
+  text: string
+}
+
 export type Question = {
   id: string
   text: string
@@ -27,6 +34,12 @@ export type Question = {
   dimension: string
   /** If true, the answer is reverse-keyed before scoring. */
   reverse?: boolean
+  /**
+   * Multiple-choice options. When present, the runner renders a choice list
+   * (one correct/best answer) instead of the Likert scale, and the stored
+   * answer is the 1-based index of the chosen option. Used by ability tests.
+   */
+  options?: ChoiceOption[]
 }
 
 export type DimensionDef = {
@@ -117,6 +130,10 @@ export type TestDefinition = {
   instructions?: string
   /** Optional kicker above the outcome name on the results page. */
   resultKicker?: string
+  /** Optional heading for the score breakdown card (defaults to a UI string). */
+  scoresTitle?: string
+  /** Optional one-line hint under the score breakdown heading. */
+  scoresHint?: string
   /** Short note on what instrument / theory the test is based on. */
   scientificBasis: string
   sources: Source[]
@@ -193,6 +210,9 @@ export type TestContent = {
   instructions?: string
   /** Kicker above the outcome name on the results page, e.g. "Your result". */
   resultKicker?: string
+  /** Heading + hint for the score breakdown card (optional; UI string fallback). */
+  scoresTitle?: string
+  scoresHint?: string
   scale: LocalizedScale
   /** Keyed by DimensionStructure.id. */
   dimensions: Record<string, LocalizedDimension>
@@ -204,6 +224,11 @@ export type TestContent = {
   outcomes: Record<string, LocalizedOutcome>
   /** Keyed by question id. */
   questions: Record<string, string>
+  /**
+   * Localized option text for multiple-choice items:
+   * questionId -> (optionId -> text). Only needed for ability/choice tests.
+   */
+  options?: Record<string, Record<string, string>>
   /**
    * Optional per-perspective wording overrides: perspectiveId -> (questionId ->
    * text). Lets a lens (e.g. "general") reword the few items that hard-code a
@@ -218,6 +243,12 @@ export type QuestionStructure = {
   id: string
   dimension: string
   reverse?: boolean
+  /**
+   * Ordered option ids for a multiple-choice item, e.g. ["a","b","c","d","e"].
+   * The content file supplies each option's text. The 1-based index of the
+   * chosen option is what gets stored and scored.
+   */
+  optionIds?: string[]
 }
 
 export type DimensionStructure = {

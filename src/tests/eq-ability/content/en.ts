@@ -1,0 +1,307 @@
+import type { TestContent } from "@/lib/test-engine/types"
+
+export const en: TestContent = {
+  title: "Emotional Intelligence Test (Ability)",
+  tagline: "How well you reason about emotions, not how you rate yourself",
+  description:
+    "A performance-based EQ test. Instead of asking you to rate yourself, it gives you emotional problems to solve: which emotion a situation produces, and the most effective way to handle it. Built from the STEU and STEM, validated ability measures used in psychology research.",
+  category: "Emotional intelligence",
+  scientificBasis:
+    "Two performance subtests from the Mayer–Salovey ability model: the Situational Test of Emotional Understanding (STEU-B, scored by Roseman's appraisal theory) and the Situational Test of Emotion Management (STEM-B, scored by expert-rated effectiveness). These measure emotional reasoning as a skill with right and wrong answers. Self-report 'EQ quizzes', by contrast, mostly capture personality and self-image. STEM-B internal reliability is about .84.",
+  disclaimer:
+    "This measures how well you reason about emotions, which is different from how you actually behave under pressure. Scores are the percentage you answered well, not a percentile or rank, since there's no normative sample built in. It is a tool for self-insight, not a clinical or hiring assessment. The Vietnamese version is a localized adaptation for comprehension and has not been separately validated.",
+  instructions:
+    "For each situation, choose the single best answer. Some ask which emotion a person is most likely to feel; others ask the most effective thing they could do. For the action items, pick the most effective response, not necessarily the nicest one or what you personally would do. Pick the best option even when more than one seems reasonable.",
+  resultKicker: "Your emotional-reasoning result",
+  scoresTitle: "Your scores",
+  scoresHint:
+    "Understanding and Managing are the two skills tested; Overall is their average. Each is the percentage you got right (Managing awards partial credit for decent-but-not-best choices). These show how you did on the test, not your rank against other people.",
+  scale: { minLabel: "", maxLabel: "" },
+  dimensions: {
+    understanding: {
+      label: "Understanding emotions",
+      description:
+        "Knowing which emotion a situation produces, and how emotions are caused, blend, and change. The reasoning side of EQ.",
+      lowLabel: "Still developing",
+      highLabel: "Reads emotions accurately",
+    },
+    managing: {
+      label: "Managing emotions",
+      description:
+        "Knowing the most effective way to handle an emotional situation in yourself and others, not just the nicest or most obvious move.",
+      lowLabel: "Still developing",
+      highLabel: "Picks effective strategies",
+    },
+    overall: {
+      label: "Overall emotional reasoning",
+      description: "The average of your understanding and managing scores.",
+      lowLabel: "Still developing",
+      highLabel: "Strong",
+    },
+  },
+  outcomes: {
+    developing: {
+      name: "Developing",
+      tagline: "The emotional-reasoning skills are still coming together",
+      summary:
+        "On this test you often picked answers that don't quite match how emotions usually work, or strategies that aren't the most effective. That's a skill gap, not a character flaw, and emotional reasoning is learnable.",
+      longDescription:
+        "Emotional understanding and management are skills, and like any skill they respond to practice. A lower score here usually means a few specific habits: reading situations a bit too quickly, or reaching for the response that feels natural rather than the one that works best. The good news is that these are concrete and trainable. Pay attention to what was actually driving an emotion in each scenario, and to which response solved both the feeling and the underlying problem.",
+      strengths: [
+        "Willing to take an honest look at a real skill rather than a flattering self-rating",
+        "Has the most room to grow, which means quick wins are available",
+      ],
+      growth: [
+        "Before reacting, name what specifically caused the emotion (a loss? a threat? someone's intentions?)",
+        "Ask which response handles both the feeling and the underlying problem, not just one",
+        "Notice when you're choosing the comfortable option instead of the effective one",
+      ],
+    },
+    capable: {
+      name: "Capable",
+      tagline: "A solid working grasp of how emotions work",
+      summary:
+        "You read most situations correctly and tend to pick reasonable strategies. You miss some of the subtler cases, the ones where the obvious emotion or the obvious response isn't quite the right one.",
+      longDescription:
+        "A capable result means your emotional reasoning is sound in everyday situations. Where points slip away is usually the trickier items: emotions that look similar but come from different appraisals (regret vs. disappointment, anger vs. sadness), or situations where the most effective response means addressing the problem and the feeling at once. Closing that gap is mostly about slowing down on ambiguous cases.",
+      strengths: [
+        "Reads everyday emotional situations accurately",
+        "Generally chooses sensible, workable responses",
+        "Has a reliable base to build sharper judgment on",
+      ],
+      growth: [
+        "Watch for look-alike emotions that come from different causes (e.g. regret vs. disappointment)",
+        "On hard calls, check whether your response handles the problem as well as the mood",
+        "Resist defaulting to avoidance or reassurance when something more direct would work better",
+      ],
+    },
+    strong: {
+      name: "Strong",
+      tagline: "Sharp, accurate reasoning about emotions",
+      summary:
+        "You correctly read most situations, including subtle ones, and reliably pick effective ways to handle them. Your emotional reasoning is a genuine strength.",
+      longDescription:
+        "A strong result means you understand not just what people feel but why, and you tend to choose responses that resolve both the emotion and the situation behind it. You distinguish emotions that look alike, and you favour strategies that actually work over ones that merely feel good. The remaining edge is the hardest, most ambiguous cases, plus turning this reasoning into consistent behaviour when you're genuinely stressed, which no written test can measure.",
+      strengths: [
+        "Accurately reads subtle and ambiguous emotional situations",
+        "Chooses responses that address both the feeling and the problem",
+        "Distinguishes closely related emotions by their causes",
+      ],
+      growth: [
+        "Push on the hardest cases where even good answers compete",
+        "Focus less on knowing the right move and more on doing it under real pressure",
+        "Use the skill to coach others, which also deepens your own",
+      ],
+    },
+    exceptional: {
+      name: "Exceptional",
+      tagline: "Emotional reasoning at the top end",
+      summary:
+        "You read emotions and choose effective responses with the kind of accuracy that's uncommon. On this test, very little got past you.",
+      longDescription:
+        "An exceptional result means you reliably identify the true cause of an emotion and select the response that resolves both feeling and situation, even in subtle cases. One honest caveat worth keeping front of mind: this test measures emotional reasoning, knowing the right answer, which is not the same as consistently acting on it when you're tired, triggered, or invested. The frontier for you isn't knowledge; it's turning that knowledge into behaviour, every time.",
+      strengths: [
+        "Pinpoints what's really driving an emotion, even in ambiguous cases",
+        "Consistently selects the most effective response, not just a good one",
+        "Strong raw material for leadership, mediation, and counselling-type roles",
+      ],
+      growth: [
+        "Mind the gap between knowing the effective response and enacting it under stress",
+        "Watch for over-relying on analysis where warmth or presence matters more",
+        "Help others build the reasoning that comes easily to you",
+      ],
+    },
+  },
+  questions: {
+    steu1: "Xavier completes a difficult task on time and under budget. How is Xavier most likely to feel?",
+    steu2: "If the current situation continues, Denise's employer will probably be able to move her job to a location much closer to her home, which she really wants. How is Denise most likely to feel?",
+    steu3: "Song finds out that a friend of hers has borrowed money from others to pay urgent bills, but has in fact used the money for less serious purposes. How is Song most likely to feel?",
+    steu4: "Charles is meeting a friend to see a movie. The friend is very late and they are not in time to make it to the movie. How is Charles most likely to feel?",
+    steu5: "Someone believes that another person harmed them on purpose. There is not a lot that can be done to make things better. How is the person involved most likely to feel?",
+    steu6: "Jim enjoys spending Saturdays playing with his children in the park. This year they have sporting activities on Saturdays and cannot go to the park with him any more. How is Jim most likely to feel?",
+    steu7: "Megan is looking to buy a house. Something happened and she felt regret. What is most likely to have happened?",
+    steu8: "Mary was working at her desk. Something happened that caused her to feel surprised. What is most likely to have happened?",
+    steu9: "Someone thinks that another person has deliberately caused something good to happen to them. How are they most likely to feel?",
+    steu10: "By their own actions, a person reaches a goal they wanted to reach. How is the person most likely to feel?",
+    steu11: "An unwanted situation becomes less likely or stops altogether. How is the person involved most likely to feel?",
+    steu12: "Hasad tries to use his new mobile phone. He has always been able to work out how to use different appliances, but he cannot get the phone to function. How is Hasad most likely to feel?",
+    steu13: "Dorian's friend is ill and coughs all over him without bothering to turn away or cover his mouth. How is Dorian most likely to feel?",
+    steu14: "Quan and his wife are talking about what happened to them that day. Something happened that caused Quan to feel surprised. What is most likely to have happened?",
+    steu15: "A supervisor who is unpleasant to work for leaves Alfonso's work. How is Alfonso most likely to feel?",
+    steu16: "The nature of Sara's job changes due to unpredictable factors and she no longer gets to do the portions of her work that she most enjoyed. How is Sara most likely to feel?",
+    steu17: "Leila has been unable to sleep well lately and there are no changes in her life that might indicate why. How is Leila most likely to feel?",
+    steu18: "Someone believes another person has deliberately caused something good to stop happening to them. However, they feel they can do something about it. How are they most likely to feel?",
+    steu19: "Matthew has been at his current job for six months. Something happened that caused him to feel regret. What is most likely to have happened?",
+    stem1: "Wai-Hin and Connie have shared an office for years but Wai-Hin gets a new job and Connie loses contact with her. What action would be the most effective for Connie?",
+    stem2: "Manual is only a few years from retirement when he finds out his position will no longer exist, although he will still have a job with a less prestigious role. What action would be the most effective for Manual?",
+    stem3: "Surbhi starts a new job where he doesn't know anyone and finds that no one is particularly friendly. What action would be the most effective for Surbhi?",
+    stem4: "Andre moves away from the city his friends and family are in. He finds his friends make less effort to keep in contact than he thought they would. What action would be the most effective for Andre?",
+    stem5: "Clayton has been overseas for a long time and returns to visit his family. So much has changed that Clayton feels left out. What action would be the most effective for Clayton?",
+    stem6: "Daniel has been accepted for a prestigious position in a different country from his family, who he is close to. He and his wife decide it is worth relocating. What action would be the most effective for Daniel?",
+    stem7: "Mei Ling answers the phone and hears that close relatives are in hospital critically ill. What action would be the most effective for Mei Ling?",
+    stem8: "Shona has not spoken to her nephew for months, whereas when he was younger they were very close. She rings him but he can only talk for five minutes. What action would be the most effective for Shona?",
+    stem9: "Mina and her sister-in-law normally get along quite well, and the sister-in-law regularly baby-sits for her for a small fee. Lately she has also been cleaning away cobwebs, commenting on the mess, which Mina finds insulting. What action would be the most effective for Mina?",
+    stem10: "Juno is fairly sure his company is going down and his job is under threat. It is a large company and nothing official has been said. What action would be the most effective for Juno?",
+    stem11: "Mallory moves from a small company to a very large one, where there is little personal contact, which she misses. What action would be the most effective for Mallory?",
+    stem12: "A demanding client takes up a lot of Jill's time and then asks to speak to Jill's boss about her performance. Although Jill's boss assures her that her performance is fine, Jill feels upset. What action would be the most effective for Jill?",
+    stem13: "Blair and Flynn usually go to a cafe after the working week and chat about what's going on in the company. After Blair's job is moved to a different section in the company, he stops coming to the cafe. Flynn misses these Friday talks. What action would be the most effective for Flynn?",
+    stem14: "Michelle's friend Dara is moving overseas to live with her partner. They have been good friends for many years and Dara is unlikely to come back. What action would be the most effective for Michelle?",
+    stem15: "Hannah's access to essential resources has been delayed and her work is way behind schedule. Her progress report makes no mention of the lack of resources. What action would be the most effective for Hannah?",
+    stem16: "Reece's friend points out that her young children seem to be developing more quickly than Reece's. Reece sees that this is true. What action would be the most effective for Reece?",
+    stem17: "Jumah has been working at a new job part-time while he studies. His shift times for the week are changed at the last minute, without consulting him. What action would be the most effective for Jumah?",
+    stem18: "Julie hasn't seen Ka for ages and looks forward to their weekend trip away. However, Ka has changed a lot and Julie finds that she is no longer an interesting companion. What action would be the most effective for Julie?",
+  },
+  options: {
+    steu1: { a: "Surprise", b: "Pride", c: "Relief", d: "Hope", e: "Joy" },
+    steu2: { a: "Distress", b: "Joy", c: "Surprise", d: "Hope", e: "Fear" },
+    steu3: { a: "Anger", b: "Excitement", c: "Contempt", d: "Shame", e: "Horror" },
+    steu4: { a: "Depressed", b: "Frustrated", c: "Angry", d: "Contemptuous", e: "Distressed" },
+    steu5: { a: "Dislike", b: "Rage", c: "Jealousy", d: "Surprise", e: "Anxiety" },
+    steu6: { a: "Angry", b: "Sad", c: "Frustrated", d: "Distressed", e: "Ashamed" },
+    steu7: {
+      a: "She didn't make an offer on a house she wanted, and now she is trying to find out if it is too late.",
+      b: "She found a house she liked that she didn't think she would find.",
+      c: "She couldn't make an offer on a house she liked because the bank didn't get her the money in time.",
+      d: "She didn't make an offer on a house she liked and now someone else has bought it.",
+      e: "She made an offer on a house and is waiting to see if it is accepted.",
+    },
+    steu8: {
+      a: "Her work-mate told a silly joke.",
+      b: "She was working on a new task she hadn't dealt with before.",
+      c: "She found some results that were different from what she thought they would be.",
+      d: "She realized she would not be able to complete her work.",
+      e: "She had to do a task she didn't normally do at work.",
+    },
+    steu9: { a: "Hope", b: "Pride", c: "Gratitude", d: "Surprise", e: "Relief" },
+    steu10: { a: "Joy", b: "Hope", c: "Relief", d: "Pride", e: "Surprise" },
+    steu11: { a: "Regret", b: "Hope", c: "Joy", d: "Sadness", e: "Relief" },
+    steu12: { a: "Distressed", b: "Confused", c: "Surprised", d: "Relieved", e: "Frustrated" },
+    steu13: { a: "Anxiety", b: "Dislike", c: "Surprise", d: "Jealousy", e: "Rage" },
+    steu14: {
+      a: "His wife talked a lot, which did not usually happen.",
+      b: "His wife talked about things that were different to what they usually discussed.",
+      c: "His wife told him that she might have some bad news.",
+      d: "His wife told Quan some news that was not what he thought it would be.",
+      e: "His wife told a funny story.",
+    },
+    steu15: { a: "Joy", b: "Hope", c: "Regret", d: "Relief", e: "Sadness" },
+    steu16: { a: "Ashamed", b: "Sad", c: "Angry", d: "Distressed", e: "Frustrated" },
+    steu17: { a: "Angry", b: "Scared", c: "Sad", d: "Distressed", e: "Guilty" },
+    steu18: { a: "Angry", b: "Contemptuous", c: "Distress", d: "Depressed", e: "Frustrated" },
+    steu19: {
+      a: "He did not apply for a position he wanted, and has found out that someone else less qualified got the job.",
+      b: "He did not apply for a position he wanted, and has started looking for a similar position.",
+      c: "He found out that opportunities for promotion have dried up.",
+      d: "He found out that he didn't get a position he thought he would get.",
+      e: "He didn't hear about a position he could have applied for and now it is too late.",
+    },
+    stem1: {
+      a: "Just accept that she is gone and the friendship is over.",
+      b: "Ring Wai-Hin and ask her out for lunch or coffee to catch up.",
+      c: "Contact Wai-Hin and arrange to catch up but also make friends with her replacement.",
+      d: "Spend time getting to know the other people in the office, and strike up new friendships.",
+    },
+    stem2: {
+      a: "Carefully consider his options and discuss it with his family.",
+      b: "Talk to his boss or the management about it.",
+      c: "Accept the situation, but still feel bitter about it.",
+      d: "Walk out of that job.",
+    },
+    stem3: {
+      a: "Have fun with his friends outside of work hours.",
+      b: "Concentrate on doing his work well at the new job.",
+      c: "Make an effort to talk to people and be friendly himself.",
+      d: "Leave the job and find one with a better environment.",
+    },
+    stem4: {
+      a: "Try to adjust to life in the new city by joining clubs and activities there.",
+      b: "He should make the effort to contact them, but also try to meet people in his new city.",
+      c: "Let go of his old friends, who have shown themselves to be unreliable.",
+      d: "Tell his friends he is disappointed in them for not contacting him.",
+    },
+    stem5: {
+      a: "Nothing, it will sort itself out soon enough.",
+      b: "Tell his family he feels left out.",
+      c: "Spend time listening and getting involved again.",
+      d: "Reflect that relationships can change with time.",
+    },
+    stem6: {
+      a: "Realize he shouldn't have applied for the job if he didn't want to leave.",
+      b: "Set up a system for staying in touch, like weekly phone calls or emails.",
+      c: "Think about the great opportunities this change offers.",
+      d: "Don't take the position.",
+    },
+    stem7: {
+      a: "Let herself cry and express emotion for as long as she feels like.",
+      b: "Speak to other family to calm herself and find out what is happening, then visit the hospital.",
+      c: "There is nothing she can do.",
+      d: "Visit the hospital and ask staff about their condition.",
+    },
+    stem8: {
+      a: "Realize that he is growing up and might not want to spend so much time with his family any more.",
+      b: "Make plans to drop by and visit him in person and have a good chat.",
+      c: "Understand that relationships change, but keep calling him from time to time.",
+      d: "Be upset about it, but realize there is nothing she can do.",
+    },
+    stem9: {
+      a: "Tell her sister-in-law these comments upset her.",
+      b: "Get a new babysitter.",
+      c: "Be grateful her house is being cleaned for free.",
+      d: "Tell her only to baby-sit, not to clean.",
+    },
+    stem10: {
+      a: "Find out what is happening and discuss his concerns with his family.",
+      b: "Try to keep the company afloat by working harder.",
+      c: "Start applying for other jobs.",
+      d: "Think of these events as an opportunity for a new start.",
+    },
+    stem11: {
+      a: "Talk to her workmates, try to create social contacts and make friends.",
+      b: "Start looking for a new job so she can leave that environment.",
+      c: "Just give it time, and things will be okay.",
+      d: "Concentrate on her outside-work friends and colleagues from previous jobs.",
+    },
+    stem12: {
+      a: "Talk to her friends or workmates about it.",
+      b: "Ignore the incident and move on to her next task.",
+      c: "Calm down by taking deep breaths or going for a short walk.",
+      d: "Think that she has been successful in the past and this client being difficult is not her fault.",
+    },
+    stem13: {
+      a: "Go to the cafe or socialize with other workers.",
+      b: "Don't worry about it, ignore the changes and let Blair be.",
+      c: "Not talk to Blair again.",
+      d: "Invite Blair again, maybe rescheduling for another time.",
+    },
+    stem14: {
+      a: "Forget about Dara.",
+      b: "Spend time with other friends, keeping herself busy.",
+      c: "Think that Dara and her partner will return soon.",
+      d: "Make sure she keeps in contact through email, phone or letter writing.",
+    },
+    stem15: {
+      a: "Explain the lack of resources to her boss or to management.",
+      b: "Learn that she should plan ahead for next time.",
+      c: "Document the lack of resources in her progress report.",
+      d: "Don't worry about it.",
+    },
+    stem16: {
+      a: "Talk the issue over with another friend.",
+      b: "Angrily confront her friend about making such statements.",
+      c: "Realize that children develop at different rates.",
+      d: "Talk to a doctor about what the normal rates of development are.",
+    },
+    stem17: {
+      a: "Refuse to work the new shifts.",
+      b: "Find out if there is some reasonable explanation for the shift changes.",
+      c: "Tell the manager in charge of shifts that he is not happy about it.",
+      d: "Grumpily accept the changes and do the shifts.",
+    },
+    stem18: {
+      a: "Cancel the trip and go home.",
+      b: "Realize that it is time to give up the friendship and move on.",
+      c: "Understand that people change, so move on, but remember the good times.",
+      d: "Concentrate on her other, more rewarding friendships.",
+    },
+  },
+}

@@ -82,13 +82,15 @@ export function ResultsPage() {
         {/* Dimensions are the real result; the style is just which corner they land in. */}
         <Card className="mt-10 p-6">
           <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-            {t.results.twoScores}
+            {test.scoresTitle ?? t.results.twoScores}
           </h2>
           <p className="text-sm text-muted-foreground mt-1 mb-5">
-            {t.results.twoScoresHint}
+            {test.scoresHint ?? t.results.twoScoresHint}
           </p>
           <div className="space-y-5">
-            {dims.map((d) => (
+            {dims.map((d) => {
+              const colorVar = test.dimensions.find((x) => x.id === d.id)?.colorVar
+              return (
               <div key={d.id}>
                 <div className="flex items-baseline justify-between mb-1.5">
                   <span className="font-medium">{d.label}</span>
@@ -101,18 +103,14 @@ export function ResultsPage() {
                     className="h-full rounded-full transition-[width] duration-700 ease-out"
                     style={{
                       width: `${d.score}%`,
-                      backgroundColor:
-                        d.id === "anxiety"
-                          ? "var(--color-anxiety)"
-                          : d.id === "avoidance"
-                            ? "var(--color-avoidance)"
-                            : "var(--primary)",
+                      backgroundColor: colorVar ? `var(${colorVar})` : "var(--primary)",
                     }}
                   />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1.5">{d.description}</p>
               </div>
-            ))}
+              )
+            })}
           </div>
         </Card>
 

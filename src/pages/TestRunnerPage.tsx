@@ -7,8 +7,10 @@ import type { Answers } from "@/lib/test-engine/types"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { LikertScaleInput } from "@/components/LikertScale"
+import { ChoiceInput } from "@/components/ChoiceInput"
 import { Layout } from "@/components/Layout"
 import { useLocale } from "@/lib/i18n/LocaleProvider"
+import { cn } from "@/lib/utils"
 
 export function TestRunnerPage() {
   const { slug = "" } = useParams()
@@ -75,6 +77,7 @@ export function TestRunnerPage() {
     question.text
   const currentValue = answers[question.id]
   const isLast = index === total - 1
+  const isChoice = question.options != null && question.options.length > 0
 
   function select(value: number) {
     const next = { ...answers, [question.id]: value }
@@ -125,16 +128,31 @@ export function TestRunnerPage() {
           <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
             {t.runner.question} {index + 1}
           </p>
-          <h2 className="mt-2 text-2xl sm:text-3xl font-medium tracking-tight text-balance leading-snug min-h-[5rem]">
+          <h2
+            className={cn(
+              "mt-2 font-medium tracking-tight leading-snug",
+              isChoice
+                ? "text-xl sm:text-2xl text-pretty"
+                : "text-2xl sm:text-3xl text-balance min-h-[5rem]"
+            )}
+          >
             {questionText}
           </h2>
 
-          <div className="mt-10">
-            <LikertScaleInput
-              scale={test.scale}
-              value={currentValue}
-              onChange={select}
-            />
+          <div className="mt-8">
+            {isChoice ? (
+              <ChoiceInput
+                options={question.options!}
+                value={currentValue}
+                onChange={select}
+              />
+            ) : (
+              <LikertScaleInput
+                scale={test.scale}
+                value={currentValue}
+                onChange={select}
+              />
+            )}
           </div>
         </div>
 

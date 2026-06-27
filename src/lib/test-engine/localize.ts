@@ -26,6 +26,8 @@ export function resolveTest(
     estimatedMinutes: def.estimatedMinutes,
     instructions: c.instructions,
     resultKicker: c.resultKicker,
+    scoresTitle: c.scoresTitle,
+    scoresHint: c.scoresHint,
     scientificBasis: c.scientificBasis,
     sources: c.sources ?? def.sources,
     disclaimer: c.disclaimer,
@@ -40,6 +42,10 @@ export function resolveTest(
       dimension: q.dimension,
       reverse: q.reverse,
       text: c.questions[q.id] ?? "",
+      options: q.optionIds?.map((oid) => ({
+        id: oid,
+        text: c.options?.[q.id]?.[oid] ?? "",
+      })),
     })),
     contexts: def.contexts?.map((id) => ({
       id,

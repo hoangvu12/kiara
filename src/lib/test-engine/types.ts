@@ -49,6 +49,13 @@ export type DimensionDef = {
   description: string
   lowLabel: string
   highLabel: string
+  /**
+   * Optional "how this can show up" interpretation, shown on the results page
+   * only when this dimension comes out elevated (level above "low"). Worded as
+   * a common tendency, not a verdict. Used by tests that pair each score with a
+   * behavioral read (e.g. the childhood-experiences profile).
+   */
+  insight?: string
   /** CSS custom-property name used to color this dimension, e.g. "--color-anxiety". */
   colorVar?: string
 }
@@ -134,6 +141,10 @@ export type TestDefinition = {
   scoresTitle?: string
   /** Optional one-line hint under the score breakdown heading. */
   scoresHint?: string
+  /** Optional heading for the per-dimension interpretation card. */
+  insightsTitle?: string
+  /** Optional framing line shown under the interpretation heading. */
+  insightsIntro?: string
   /** Short note on what instrument / theory the test is based on. */
   scientificBasis: string
   sources: Source[]
@@ -181,6 +192,8 @@ export type LocalizedDimension = {
   description: string
   lowLabel: string
   highLabel: string
+  /** Optional "how this can show up" read, shown only when elevated. */
+  insight?: string
 }
 
 export type LocalizedOutcome = {
@@ -213,6 +226,9 @@ export type TestContent = {
   /** Heading + hint for the score breakdown card (optional; UI string fallback). */
   scoresTitle?: string
   scoresHint?: string
+  /** Heading + framing line for the per-dimension interpretation card. */
+  insightsTitle?: string
+  insightsIntro?: string
   scale: LocalizedScale
   /** Keyed by DimensionStructure.id. */
   dimensions: Record<string, LocalizedDimension>

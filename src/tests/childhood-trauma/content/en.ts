@@ -26,7 +26,7 @@ const questions: Record<string, string> = {
   pp4: "A parent spanked you on the bottom, arms, or legs.",
   pp5: "A parent spanked you on your bare bottom.",
   pp6: "A parent hit you with an object, like a belt, paddle, or stick.",
-  // Emotional neglect (en3–en5 are reverse-worded)
+  // Emotional neglect (en3 to en5 are reverse-worded)
   en1: "Your mother, or the woman who raised you, was emotionally distant when there was no real reason for it.",
   en2: "Your father, or the man who raised you, was emotionally distant when there was no real reason for it.",
   en3: "There was someone in your family who made you feel loved.",
@@ -61,7 +61,7 @@ const questions: Record<string, string> = {
   // Witnessing violence between parents
   wi1: "You saw an adult at home push, slap, or throw something at your mother (or the woman raising you).",
   wi2: "You saw your mother get hit hard enough to leave a mark that lasted more than a few minutes.",
-  wi3: "You saw your mother hurt badly enough to need medical care.",
+  wi3: "You saw your mother hit or harmed badly enough to need medical care.",
   wi4: "You saw an adult at home push, slap, or throw something at your father (or the man raising you).",
   wi5: "You saw your father get hit hard enough to leave a mark that lasted more than a few minutes.",
   // Witnessing violence to a sibling
@@ -80,18 +80,21 @@ export const en: TestContent = {
   title: "Childhood Experiences Profile",
   tagline: "A gentle look back at what you lived through growing up",
   description:
-    "This walks through different kinds of hard experiences that can happen in childhood — at home, and with other kids — and shows you which ones you went through and how much. It won't hand you a label like “trauma survivor.” What it gives you is an honest map of your early life, so the picture feels clearer and less tangled. Heads-up: the questions name things like physical and sexual abuse directly, so take it only when you feel steady, and step away anytime you need to.",
+    "This walks through different kinds of hard experiences that can happen in childhood, at home and with other kids, then shows you which ones you went through and how much. It won't hand you a label like \"trauma survivor.\" What it gives you is an honest map of your early life, so the picture feels clearer and less tangled. One heads-up: the questions name things like physical and sexual abuse directly, so take it only when you feel steady, and step away any time you need to.",
   category: "Childhood & trauma",
   scientificBasis:
-    "Adapted from the MACE scale (Maltreatment and Abuse Chronology of Exposure; Teicher & Parigger, 2015), an open-access research instrument that measures ten separate types of childhood maltreatment instead of lumping everything into one number — which is the main thing that sets it apart from the older ACE questionnaire. Each type gets its own score, so you see a profile rather than a single total. The wording here has been naturalized for easy reading in English and Vietnamese, so treat this as a thoughtful adaptation rather than the verbatim validated scale.",
+    "Adapted from the MACE scale (Maltreatment and Abuse Chronology of Exposure; Teicher & Parigger, 2015), an open-access research instrument that measures ten separate types of childhood maltreatment instead of lumping everything into one number. That's the main thing that sets it apart from the older ACE questionnaire. Each type gets its own score, so you see a profile rather than a single total. All 52 questions and the ten types match the published scale one for one, and the point where each type gets flagged uses that study's own cutoffs, so that part stays in step with the validated original. What we changed is the surface: the wording is naturalized for easy reading in English and Vietnamese, and each bar shows a simple share of what you marked rather than the study's statistical weighting. So treat this as a faithful adaptation for reflection, not the verbatim clinical instrument.",
   disclaimer:
-    "This is for self-understanding, not a diagnosis. A high score on any type doesn't mean something is wrong with you, and a low score doesn't erase anything that happened — even one painful experience can matter, no matter where the bars land. How childhood shaped you depends on far more than a questionnaire can capture, including the support you had and have. If any of this brings up a lot, please reach out. In the US you can call or text 988 (Suicide & Crisis Lifeline), or RAINN at 1-800-656-4673 for sexual abuse. In Vietnam, the Ngày Mai emotional-support line is 096 306 1414, and the national child-protection hotline is 111. If you're in immediate danger, contact your local emergency services.",
+    "This is for self-understanding, not a diagnosis. A high score on any type doesn't mean something is wrong with you, and a low score doesn't erase anything that happened. Even one painful experience can matter, no matter where the bars land. How childhood shaped you depends on far more than a questionnaire can capture, including the support you had and have. If any of this brings up a lot, please reach out. In the US you can call or text 988 (Suicide & Crisis Lifeline), or RAINN at 1-800-656-4673 for sexual abuse. Elsewhere, most countries have their own crisis line. If you're in immediate danger, contact your local emergency services.",
   instructions:
-    "Think back over your whole childhood and teenage years. For each one, answer yes if it happened to you, even once or twice, and no if it didn't. There are no right answers here — just what's true for you. If a question doesn't fit your situation, answer no and keep going.",
+    "Think back over your whole childhood and teenage years. For each one, answer yes if it happened to you, even once or twice, and no if it didn't. There are no right answers here, just what's true for you. If a question doesn't fit your situation, answer no and keep going.",
   resultKicker: "What your answers suggest",
   scoresTitle: "Your profile across ten types",
   scoresHint:
-    "Each bar is one kind of childhood experience, and how high it sits reflects how much of that type you reported. This is a reflection to help you see patterns, not a score to measure yourself by. Please read a low bar gently: it doesn't undo anything you lived through, and a single serious experience counts even when its bar is short.",
+    "Each bar is one kind of childhood experience, and how high it sits reflects how much of that type you went through. Think of it as a mirror for spotting what repeated, not a score to measure yourself by. Please read a low bar gently: it doesn't undo anything you lived through, and a single serious experience counts even when its bar is short.",
+  insightsTitle: "How this can show up later",
+  insightsIntro:
+    "For the types that came out higher for you, here are patterns that researchers often see in adults who lived through them. Read these as common tendencies, not a verdict. Some may fit you closely, others not at all, and none of them are set in stone. The point is to give words to things you might already feel, so they're easier to understand and work with.",
   scale: { minLabel: "No", maxLabel: "Yes" },
   dimensions: {
     verbalAbuse: {
@@ -100,6 +103,8 @@ export const en: TestContent = {
         "Being sworn at, put down, humiliated, or threatened by a parent or caregiver.",
       lowLabel: "Rarely or never",
       highLabel: "Often",
+      insight:
+        "Words said early often become the inner voice you carry. Many people who lived through a lot of this end up with a harsh inner critic, a quickness to assume they're being judged, or a sting around criticism that feels bigger than the moment calls for. If you catch yourself talking to yourself in a tone no one would use on a friend, this is often where it learned to speak.",
     },
     nonverbalAbuse: {
       label: "Emotional abuse at home",
@@ -107,6 +112,8 @@ export const en: TestContent = {
         "Being frightened, controlled, ignored, or burdened in ways that weren't physical but still hurt.",
       lowLabel: "Rarely or never",
       highLabel: "Often",
+      insight:
+        "When home felt unpredictable, you may have learned to read the room constantly, to stay one step ahead of someone else's mood. As an adult that can look like trouble relaxing, a habit of bracing for something to go wrong, or finding it hard to believe you're genuinely wanted rather than tolerated.",
     },
     physicalAbuse: {
       label: "Physical abuse at home",
@@ -114,6 +121,8 @@ export const en: TestContent = {
         "Being hit, spanked, or physically hurt by a parent or caregiver.",
       lowLabel: "Rarely or never",
       highLabel: "Often",
+      insight:
+        "The body remembers feeling unsafe even after the mind has moved on. Anger or conflict near you can set off a fast physical reaction, tensing, going still, wanting to leave, before you've had time to think. It isn't overreacting. It's an old alarm that learned to fire early.",
     },
     emotionalNeglect: {
       label: "Emotional neglect",
@@ -121,13 +130,17 @@ export const en: TestContent = {
         "Growing up without enough warmth, attention, or the sense that you were loved and mattered.",
       lowLabel: "Felt cared for",
       highLabel: "Often unmet",
+      insight:
+        "When feelings weren't met or noticed, you may have learned to handle everything yourself and to go quiet about what you need. Later that can feel like not quite knowing what you're feeling, a sense that you have to earn love by being useful, or an emptiness that's hard to name even when life looks fine on paper.",
     },
     physicalNeglect: {
       label: "Physical neglect",
       description:
-        "Not reliably having your basic needs met — food, clean clothes, safety, or care when sick.",
+        "Not reliably having your basic needs met: food, clean clothes, safety, or care when you were sick.",
       lowLabel: "Needs were met",
       highLabel: "Often unmet",
+      insight:
+        "When care wasn't reliable, trusting that you'll be looked after doesn't come easily. This can show up as over-responsibility, struggling to rest or to ask for help, or a quiet belief that you're on your own and have to make sure everything is handled yourself.",
     },
     sexualAbuse: {
       label: "Sexual abuse",
@@ -135,6 +148,8 @@ export const en: TestContent = {
         "Any sexual contact or pressure from an adult or a peer during childhood.",
       lowLabel: "Not reported",
       highLabel: "Reported",
+      insight:
+        "This is one of the experiences most worth being gentle with yourself about, and one where support helps most. It can leave a complicated relationship with the body, with closeness, with trust or boundaries, and shame that was never yours to carry. None of it was your fault, and you don't have to make sense of it alone. A trauma-informed therapist can make a real difference here.",
     },
     peerEmotional: {
       label: "Emotional bullying by peers",
@@ -142,6 +157,8 @@ export const en: TestContent = {
         "Being insulted, excluded, mocked, or targeted with rumors by other kids.",
       lowLabel: "Rarely or never",
       highLabel: "Often",
+      insight:
+        "Being targeted or left out by other kids teaches you to watch for it happening again. As an adult that can look like reading groups for the first sign you're unwanted, expecting to be disliked before anyone's given a reason, or a sensitivity to rejection that flares fast in social situations.",
     },
     peerPhysical: {
       label: "Physical bullying by peers",
@@ -149,6 +166,8 @@ export const en: TestContent = {
         "Being threatened, forced, or physically hurt by other kids.",
       lowLabel: "Rarely or never",
       highLabel: "Often",
+      insight:
+        "When other kids were a physical threat, you may have learned to stay alert and guarded, especially in new or competitive settings. That watchfulness once kept you safe. Later it can leave you tense around people you don't yet trust, or quick to read a situation as a threat before it is one.",
     },
     witnessParents: {
       label: "Seeing violence between parents",
@@ -156,6 +175,8 @@ export const en: TestContent = {
         "Witnessing one parent or adult at home physically hurt the other.",
       lowLabel: "Rarely or never",
       highLabel: "Often",
+      insight:
+        "Watching the people who were supposed to be safe hurt each other can make conflict itself feel dangerous. You might freeze, rush to smooth things over, or feel a strong reaction to raised voices. It can also quietly shape what you expect love and closeness to look like, sometimes in ways you'd never choose on purpose.",
     },
     witnessSibling: {
       label: "Seeing harm to a sibling",
@@ -163,6 +184,8 @@ export const en: TestContent = {
         "Witnessing a parent or adult physically or sexually hurt your brother or sister.",
       lowLabel: "Rarely or never",
       highLabel: "Often",
+      insight:
+        "Seeing a brother or sister get hurt can leave its own weight: guilt for not being able to stop it, a pull to protect people, and a strong reaction whenever you sense someone being treated badly. The helplessness you felt then can still surface when you watch someone you care about suffer.",
     },
   },
   outcomes: {
@@ -170,9 +193,9 @@ export const en: TestContent = {
       name: "A largely steady childhood",
       tagline: "Few of these hard experiences came up for you",
       summary:
-        "Across these ten types, you reported little of the harm this test asks about. That points to a childhood that, on these measures, was relatively safe and supported.",
+        "Across these ten types, what you marked shows little of the harm this test asks about. That points to a childhood that, by what it measures, was relatively safe and supported.",
       longDescription:
-        "This doesn't mean your childhood was perfect, and no questionnaire could tell you that. Plenty of real pain — loss, loneliness, family stress, things that happened later — sits outside what this particular test covers. What it does suggest is that the specific kinds of abuse and neglect measured here weren't a big part of your early life. If something still feels heavy when you look back, that feeling is valid and worth taking seriously on its own terms.",
+        "This doesn't mean your childhood was perfect, and no questionnaire could tell you that. Plenty of real pain, like loss, loneliness, family stress, or things that happened later, sits outside what this particular test covers. What it does suggest is that the specific kinds of abuse and neglect measured here weren't a big part of your early life. If something still feels heavy when you look back, that feeling is valid and worth taking seriously on its own terms.",
       strengths: [
         "Likely had at least some steady, caring relationships growing up",
         "Took an honest look back, which isn't always easy even when the answers are reassuring",
@@ -186,9 +209,9 @@ export const en: TestContent = {
       name: "Some hard chapters",
       tagline: "One or two kinds of difficulty stood out",
       summary:
-        "You reported a clear pattern in one or two of these areas. That's real, and it's worth acknowledging rather than brushing past — these experiences can shape how you feel and relate, sometimes in ways that are easy to miss.",
+        "One or two of these areas stood out clearly in your answers. That's real, and it's worth acknowledging rather than brushing past. These experiences can shape how you feel and connect with people, sometimes in ways that are easy to miss.",
       longDescription:
-        "Having one or two of these stand out is genuinely common, and it doesn't define you. What tends to help is naming the specific area honestly instead of either minimizing it (“it wasn't that bad”) or letting it color everything. Look at which type came up for you and how it might still echo today, in your relationships, your reactions, or how you treat yourself. Many people find it useful to talk these things through with someone they trust, or a counselor.",
+        "Having one or two of these stand out is genuinely common, and it doesn't define you. What tends to help is naming the specific area honestly instead of either minimizing it (\"it wasn't that bad\") or letting it color everything. Look at which type came up for you and how it might still echo today, in your relationships, your reactions, or how you treat yourself. Many people find it useful to talk these things through with someone they trust, or a counselor.",
       strengths: [
         "Came through difficulty in some areas with other parts of childhood more intact",
         "Willing to look honestly at what was hard, which is where understanding starts",
@@ -203,9 +226,9 @@ export const en: TestContent = {
       name: "Several kinds of adversity",
       tagline: "A few different hard experiences ran through your childhood",
       summary:
-        "You reported clear patterns across several of these areas. Carrying more than one kind of early adversity is a lot, and the fact that you're looking at it now takes real courage.",
+        "Several of these areas stood out clearly in your answers. Carrying more than one kind of early adversity is a lot, and the fact that you're looking at it now takes real courage.",
       longDescription:
-        "When several types overlap, they tend to interact rather than just add up, and their effects can reach into adult life — into how safe you feel, how you handle closeness, stress, and self-worth. None of that is a life sentence, and it absolutely isn't your fault. People do heal, especially with support and the kind of self-understanding you're building right now. If you haven't yet, this may be a sign that working with a therapist who knows trauma could really be worth it.",
+        "When several types overlap, they tend to interact rather than just add up, and their effects can reach into adult life: how safe you feel, how you handle closeness and stress, and your sense of self-worth. None of that is a life sentence, and it absolutely isn't your fault. People do heal, especially with support and the kind of self-understanding you're building right now. If you haven't yet, this may be a sign that working with a therapist who knows trauma could really be worth it.",
       strengths: [
         "Showed real resilience to reach where you are after carrying a lot",
         "Facing several hard truths at once takes courage many people avoid",
@@ -213,7 +236,7 @@ export const en: TestContent = {
       ],
       growth: [
         "Consider working with a trauma-informed therapist if that's available to you",
-        "Go gently — looking back at several hard things can stir a lot up",
+        "Go gently, since looking back at several hard things can stir a lot up",
         "Build and lean on relationships that feel safe and steady",
       ],
     },
@@ -221,9 +244,9 @@ export const en: TestContent = {
       name: "Adversity across many areas",
       tagline: "Hardship touched many parts of your early life",
       summary:
-        "You reported clear patterns across many of these types. That points to a childhood with a heavy, wide-ranging load of adversity — and it means a great deal that you've made it here and are willing to look.",
+        "Many of these areas stood out clearly in your answers. That points to a childhood with a heavy, wide-ranging load of adversity. It means a great deal that you've made it here and are willing to look.",
       longDescription:
-        "When this many areas are affected, it usually says something about the environment you grew up in, not about you or anything you did. Adversity this broad can leave a real mark on health, relationships, and how you see yourself, and you deserve genuine support in working through it — not a quiz result. Please treat this less as a verdict and more as a nudge toward care. Trauma-informed therapy helps many people with exactly this, and reaching out is a strength, not a weakness. You don't have to carry it alone.",
+        "When this many areas are affected, it usually says something about the environment you grew up in, not about you or anything you did. Adversity this broad can leave a real mark on health, relationships, and how you see yourself, and you deserve genuine support in working through it, not a quiz result. Please treat this less as a verdict and more as a nudge toward care. Trauma-informed therapy helps many people with exactly this, and reaching out is a strength, not a weakness. You don't have to carry it alone.",
       strengths: [
         "Survived a great deal and are still here, looking honestly at it",
         "Real courage to face a childhood this hard rather than look away",

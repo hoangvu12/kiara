@@ -28,6 +28,8 @@ export function resolveTest(
     resultKicker: c.resultKicker,
     scoresTitle: c.scoresTitle,
     scoresHint: c.scoresHint,
+    insightsTitle: c.insightsTitle,
+    insightsIntro: c.insightsIntro,
     scientificBasis: c.scientificBasis,
     sources: c.sources ?? def.sources,
     disclaimer: c.disclaimer,

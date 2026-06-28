@@ -1,27 +1,30 @@
 import type {
   QuestionStructure,
   ScoredDimension,
+  ScoreLevel,
   Source,
   TestResult,
 } from "@/lib/test-engine/types"
-import { levelFromScore } from "@/lib/test-engine/scoring"
 
 /**
  * Language-neutral structure + scoring for the childhood-experiences profile.
  *
  * Adapted from the MACE (Maltreatment and Abuse Chronology of Exposure) scale,
- * Teicher & Parigger (2015), PLOS ONE — an open-access (CC BY) instrument that
+ * Teicher & Parigger (2015), PLOS ONE, an open-access (CC BY) instrument that
  * measures ten distinct types of childhood maltreatment. We use the "types +
  * severity" form: each item is answered yes/no, and each of the ten types gets
- * a 0–100 severity score (the share of that type's experiences a person reports).
+ * a 0 to 100 severity score (the share of that type's experiences a person reports).
  * We deliberately leave out MACE's full year-by-year chronology grid, which is
  * long and heavy for a self-guided web test.
  *
  * This is an ADAPTATION, not the verbatim validated instrument: item wording is
- * naturalized for plain reading in English and Vietnamese, and the scoring is a
- * transparent proportion model rather than MACE's item-response weighting. Treat
- * scores as a reflective profile, not a clinical measurement. Wording lives in
- * content/<locale>.ts; the ids here are the keys those files translate.
+ * naturalized for plain reading in English and Vietnamese, and each bar shows a
+ * transparent share-of-items severity rather than MACE's item-response logit
+ * weighting. The one place we stay faithful to the original numbers is which
+ * types get flagged as present: that uses the exact per-type cutoffs from the
+ * paper (see PRESENT_CUTOFF below). Treat the bars as a reflective profile, not
+ * a clinical measurement. Wording lives in content/<locale>.ts; the ids here are
+ * the keys those files translate.
  */
 
 export const maceScale = { min: 1, max: 2 } // yes/no choice items; kept for the type
@@ -128,7 +131,12 @@ export const maceSources: Source[] = [
     url: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0117423",
   },
   {
-    label: "MACE scale, scoring and translations — Dr. Martin Teicher's lab",
+    label:
+      "Same paper, full text on PubMed Central, with the subscale tables and cutoff thresholds we used",
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4340880/",
+  },
+  {
+    label: "MACE scale scoring and translations, from Dr. Martin Teicher's lab",
     url: "https://drteicher.wordpress.com/2017/03/18/maltreatment-and-abuse-chronology-of-exposure-mace-scale-translations/",
   },
   {
@@ -139,12 +147,32 @@ export const maceSources: Source[] = [
 ]
 
 /**
- * A type counts as "present" when a person reports at least a third of that
- * type's experiences. Below that, an item or two still raises the type's bar but
- * isn't counted as a recurring pattern. This keeps a single, isolated answer
- * from being labelled a full "type", while still showing it on the profile.
+ * How many items a person has to endorse for a type to count as "present".
+ * These are the exact cutoffs Teicher and Parigger published for the MACE: they
+ * derived them with item-response theory, so each type has its own number
+ * rather than one shared rule. Severe types flag early (sexual abuse or
+ * witnessing violence count from one or two experiences) while milder types
+ * need more, which is why a flat "a third of the items" rule would mislabel
+ * most of the ten. See Table 2 to Table 11 of the 2015 PLOS ONE paper, where
+ * each subscale states its threshold ("a threshold was set at N selected
+ * items"). Below the cutoff an experience still raises the bar but isn't
+ * counted as a recurring pattern.
  */
-const PRESENT_THRESHOLD = 1 / 3
+const PRESENT_CUTOFF: Record<string, number> = {
+  verbalAbuse: 3, // of 4 items
+  nonverbalAbuse: 4, // of 6
+  physicalAbuse: 4, // of 6
+  emotionalNeglect: 2, // of 5
+  physicalNeglect: 2, // of 5
+  sexualAbuse: 2, // of 7
+  peerEmotional: 4, // of 5
+  peerPhysical: 2, // of 5
+  witnessParents: 2, // of 5
+  witnessSibling: 1, // of 4
+}
+
+/** Endorsing two thirds or more of a type's items reads as "high". */
+const HIGH_PROPORTION = 2 / 3
 
 /** Did this answer point toward maltreatment? Reverse items flip yes/no. */
 function endorsed(item: Item, value: number | undefined): boolean {
@@ -154,6 +182,10 @@ function endorsed(item: Item, value: number | undefined): boolean {
   return item.reverse ? !saidYes : saidYes
 }
 
+function cutoffFor(dimId: string, total: number): number {
+  return PRESENT_CUTOFF[dimId] ?? Math.ceil(total / 3)
+}
+
 function bandFor(typesPresent: number): string {
   if (typesPresent === 0) return "minimal"
   if (typesPresent <= 2) return "some"
@@ -161,8 +193,25 @@ function bandFor(typesPresent: number): string {
   return "pervasive"
 }
 
-function scored(id: string, score: number, raw: number): ScoredDimension {
-  return { id, label: "", description: "", score, raw, level: levelFromScore(score) }
+/**
+ * Level keyed to the MACE present cutoff rather than the generic 40/60 score
+ * cutoffs: a type stays "low" until it reaches its cutoff, then reads "medium",
+ * then "high" once endorsement is substantial. This means a type counts as
+ * elevated at exactly the point the scorer counts it as present, so the results
+ * page surfaces an interpretive note for a type precisely when it is flagged.
+ */
+function levelFor(dimId: string, hits: number, total: number): ScoreLevel {
+  if (hits < cutoffFor(dimId, total)) return "low"
+  return total > 0 && hits / total >= HIGH_PROPORTION ? "high" : "medium"
+}
+
+function scored(
+  id: string,
+  score: number,
+  raw: number,
+  level: ScoreLevel
+): ScoredDimension {
+  return { id, label: "", description: "", score, raw, level }
 }
 
 /** Pure scorer: answers (questionId -> 1-based yes/no index) -> result. */
@@ -172,10 +221,9 @@ export function scoreMace(answers: Record<string, number>): TestResult {
   const dimensions = maceDimensions.map((dim) => {
     const items = ITEMS.filter((it) => it.dimension === dim.id)
     const hits = items.filter((it) => endorsed(it, answers[it.id])).length
-    const proportion = items.length > 0 ? hits / items.length : 0
-    if (proportion >= PRESENT_THRESHOLD) typesPresent += 1
-    const score = Math.round(proportion * 100)
-    return scored(dim.id, score, hits)
+    if (hits >= cutoffFor(dim.id, items.length)) typesPresent += 1
+    const score = items.length > 0 ? Math.round((hits / items.length) * 100) : 0
+    return scored(dim.id, score, hits, levelFor(dim.id, hits, items.length))
   })
 
   return { outcomeId: bandFor(typesPresent), dimensions }

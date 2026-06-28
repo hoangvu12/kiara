@@ -58,6 +58,19 @@ export function ResultsPage() {
 
   const contextText = context ? outcome.contexts?.[context] : undefined
 
+  // Per-dimension interpretation: shown for elevated types only, and only when
+  // the test supplies the copy. Pairs each elevated bar with a "how this can
+  // show up" read, framed as a tendency rather than a verdict.
+  const insightDims = test.insightsTitle
+    ? dims
+        .filter((d) => d.level !== "low")
+        .map((d) => ({
+          ...d,
+          insight: test.dimensions.find((x) => x.id === d.id)?.insight,
+        }))
+        .filter((d) => d.insight)
+    : []
+
   function retake() {
     clearAnswers(test!.id)
     navigate(`/test/${test!.slug}/take`)
@@ -113,6 +126,30 @@ export function ResultsPage() {
             })}
           </div>
         </Card>
+
+        {/* Per-dimension interpretation for elevated types */}
+        {insightDims.length > 0 && (
+          <Card className="mt-6 p-6">
+            <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+              {test.insightsTitle}
+            </h2>
+            {test.insightsIntro && (
+              <p className="text-sm text-muted-foreground mt-1 mb-5 text-pretty">
+                {test.insightsIntro}
+              </p>
+            )}
+            <div className="space-y-5">
+              {insightDims.map((d) => (
+                <div key={d.id} className="border-l-2 border-primary/30 pl-4">
+                  <p className="font-medium">{d.label}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mt-1 text-pretty">
+                    {d.insight}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Card>
+        )}
 
         {/* Quadrant map */}
         {test.quadrant && xDim && yDim && (

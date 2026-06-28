@@ -9,7 +9,7 @@ export const vi: TestContent = {
   title: "Bài test phong cách gắn bó",
   tagline: "Khám phá cách bạn kết nối trong những mối quan hệ thân thiết",
   description:
-    "Đo lường các khuôn mẫu gắn bó của bạn trên hai thang đo, lo âu và né tránh, dựa trên bộ câu hỏi ECR-R trong nghiên cứu tâm lý học.",
+    "Đo vị trí của bạn trên hai thang đo gắn bó, lo âu và né tránh, dựa trên bộ câu hỏi ECR-R trong nghiên cứu tâm lý học.",
   category: "Quan hệ",
   scientificBasis:
     "Dựa trên bộ câu hỏi Experiences in Close Relationships-Revised (ECR-R), một trong những thước đo gắn bó ở người trưởng thành được kiểm chứng nhiều nhất trong tâm lý học. Mỗi thang đo của nó thường đạt độ tin cậy nội tại trên .90.",
@@ -154,7 +154,7 @@ export const vi: TestContent = {
         "Kết quả này nghĩa là lo âu cao và né tránh cao (đôi khi còn gọi là kiểu hỗn loạn). Bạn có thể vừa khao khát sự gần gũi mãnh liệt vừa hoài nghi nó cùng một lúc, khiến các mối quan hệ giống như một sự giằng co: đến gần thì khơi lên nỗi sợ bị tổn thương, còn lùi lại thì khơi lên nỗi sợ bị cô đơn. Kiểu này thường bắt nguồn từ những lúc người mà bạn cần đến lại cũng chính là nguồn gây căng thẳng hay tổn thương. Nó thường đi kèm với cảm xúc mạnh và khả năng nhận ra rất nhanh khi có gì đó không an toàn. Tin tốt là nó đáp ứng tốt với việc từ từ xây dựng cảm giác an toàn, và nhiều người thấy nó dịu đi theo thời gian, nhất là khi có sự hỗ trợ.",
       strengths: [
         "Có khả năng đồng cảm thật sự và thấu hiểu cảm xúc",
-        "Rất nhạy với những gì đang diễn ra trong một mối quan hệ, kể cả khuôn mẫu của chính mình",
+        "Rất nhạy với những gì đang diễn ra trong một mối quan hệ, kể cả những kiểu phản ứng quen thuộc của chính mình",
         "Thật lòng khao khát một sự kết nối sâu sắc",
       ],
       growth: [
@@ -164,9 +164,9 @@ export const vi: TestContent = {
       ],
       contexts: {
         single:
-          "Khi độc thân, bạn có thể vừa khao khát một mối quan hệ mãnh liệt vừa thấy nhẹ nhõm khi có khoảng cách. Chỉ cần nhận ra khuôn mẫu đó, mà không tự trách mình, đã là bước đầu tiên.",
+          "Khi độc thân, bạn có thể vừa khao khát một mối quan hệ mãnh liệt vừa thấy nhẹ nhõm khi có khoảng cách. Chỉ cần nhận ra điều đó ở mình, mà không tự trách, đã là bước đầu tiên.",
         partnered:
-          "Trong một mối quan hệ, bạn có thể lật qua lật lại giữa gần gũi và rút lui, điều này có thể khiến người kia bối rối. Sự kiên nhẫn, ổn định, và việc thật sự nói ra khuôn mẫu này sẽ giúp ích rất nhiều.",
+          "Trong một mối quan hệ, bạn có thể lật qua lật lại giữa gần gũi và rút lui, điều này có thể khiến người kia bối rối. Sự kiên nhẫn, ổn định, và việc nói thẳng điều này ra sẽ giúp ích rất nhiều.",
         parent:
           "Khi làm cha mẹ, những cảm xúc mạnh có thể khó kiểm soát trong khoảnh khắc. Việc bạn tự xây dựng cảm giác an toàn cho mình, cùng với sự hỗ trợ, là điều giúp con bạn nhiều nhất.",
       },

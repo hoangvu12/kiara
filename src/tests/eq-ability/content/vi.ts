@@ -162,7 +162,7 @@ export const vi: TestContent = {
   options: {
     steu1: { a: "Ngạc nhiên", b: "Tự hào", c: "Nhẹ nhõm", d: "Hy vọng", e: "Vui sướng" },
     steu2: { a: "Khổ sở", b: "Vui sướng", c: "Ngạc nhiên", d: "Hy vọng", e: "Sợ hãi" },
-    steu3: { a: "Tức giận", b: "Phấn khích", c: "Khinh thường", d: "Xấu hổ", e: "Kinh hãi" },
+    steu3: { a: "Tức giận", b: "Nhẹ nhõm", c: "Khinh thường", d: "Xấu hổ", e: "Thất vọng" },
     steu4: { a: "Chán nản", b: "Bực bội", c: "Tức giận", d: "Khinh thường", e: "Khổ sở" },
     steu5: { a: "Ác cảm", b: "Phẫn nộ", c: "Ghen tị", d: "Ngạc nhiên", e: "Lo âu" },
     steu6: { a: "Tức giận", b: "Buồn", c: "Bực bội", d: "Khổ sở", e: "Xấu hổ" },

@@ -2,6 +2,7 @@ import type { LocalizedTestDefinition, TestDefinition } from "./types"
 import { resolveTest } from "./localize"
 import { attachmentStyleTest } from "@/tests/attachment-style"
 import { eqAbilityTest } from "@/tests/eq-ability"
+import { childhoodTraumaTest } from "@/tests/childhood-trauma"
 
 /**
  * The master list of tests in the app. To add a new test:
@@ -11,7 +12,11 @@ import { eqAbilityTest } from "@/tests/eq-ability"
  * Everything else (catalog card, runner, results) is generated from it, in
  * whatever language is active.
  */
-export const tests: LocalizedTestDefinition[] = [attachmentStyleTest, eqAbilityTest]
+export const tests: LocalizedTestDefinition[] = [
+  attachmentStyleTest,
+  eqAbilityTest,
+  childhoodTraumaTest,
+]
 
 /** Resolve every test into the active locale (for the catalog). */
 export function getTests(locale: string): TestDefinition[] {

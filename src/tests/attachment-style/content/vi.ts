@@ -9,12 +9,12 @@ export const vi: TestContent = {
   title: "Bài test phong cách gắn bó",
   tagline: "Khám phá cách bạn kết nối trong những mối quan hệ thân thiết",
   description:
-    "Đo vị trí của bạn trên hai thang đo gắn bó, lo âu và né tránh, dựa trên bộ câu hỏi ECR-R trong nghiên cứu tâm lý học.",
+    "Đo vị trí của bạn trên hai thang đo gắn bó, lo âu và né tránh. Hãy trả lời về người yêu, cha mẹ, hoặc bạn thân của bạn.",
   category: "Quan hệ",
   scientificBasis:
-    "Dựa trên bộ câu hỏi Experiences in Close Relationships-Revised (ECR-R), một trong những thước đo gắn bó ở người trưởng thành được kiểm chứng nhiều nhất trong tâm lý học. Mỗi thang đo của nó thường đạt độ tin cậy nội tại trên .90.",
+    "Dựa trên bộ câu hỏi Experiences in Close Relationships-Revised (ECR-R), một trong những thước đo gắn bó ở người trưởng thành được kiểm chứng nhiều nhất trong tâm lý học; mỗi thang đo của nó thường đạt độ tin cậy nội tại trên .90. Với cha mẹ hay bạn thân, bài test chuyển sang ECR-RS, một phiên bản ngắn cũng từ phòng nghiên cứu đó, được làm riêng cho những mối quan hệ ngoài tình yêu.",
   disclaimer:
-    "Đây là một công cụ để hiểu bản thân, dựa trên một bộ câu hỏi nghiên cứu. Nó không phải là chẩn đoán y khoa. Gắn bó thật ra nằm trên hai thang đo trượt, nên hãy xem tên phong cách chỉ là một bản tóm tắt thân thiện về nơi bạn rơi vào. Nó cũng có thể thay đổi theo thời gian.",
+    "Đây là một công cụ để hiểu bản thân, dựa trên một bộ câu hỏi nghiên cứu. Nó không phải là chẩn đoán y khoa. Gắn bó thật ra nằm trên hai thang đo trượt, nên hãy xem tên phong cách chỉ là một bản tóm tắt thân thiện về nơi bạn rơi vào. Nó có thể thay đổi theo thời gian, và cũng có thể khác nhau giữa các mối quan hệ, nên hãy xem kết quả này là về đúng người bạn vừa nghĩ tới.",
   instructions:
     "Hãy trả lời theo cảm nhận chung của bạn trong các mối quan hệ tình cảm gần gũi, dù là trong quá khứ, hiện tại hay bạn hình dung ra. Nếu bạn chưa từng yêu, hãy trả lời theo cách bạn nghĩ mình sẽ cảm thấy.",
   resultKicker: "Phong cách gắn bó của bạn",
@@ -54,16 +54,23 @@ export const vi: TestContent = {
   },
   perspectives: {
     romantic: {
-      label: "Quan hệ tình cảm",
+      label: "Người yêu",
       instruction:
         "Hãy trả lời theo cảm nhận chung của bạn trong các mối quan hệ tình cảm gần gũi, dù là trong quá khứ, hiện tại hay bạn hình dung ra. Nếu bạn chưa từng yêu, hãy trả lời theo cách bạn nghĩ mình sẽ cảm thấy.",
     },
-    general: {
-      label: "Quan hệ thân thiết nói chung",
+    mother: {
+      label: "Mẹ của bạn",
       instruction:
-        "Hãy trả lời theo cảm nhận chung của bạn với những người thân thiết nhất, như bạn thân hay gia đình. Hãy hiểu chữ \"người ấy\" là bất kỳ ai bạn thấy gần gũi nhất.",
-      note:
-        "Phong cách gắn bó hình thành từ sớm, qua cách những người nuôi dạy bạn đối xử với bạn, nên bạn vẫn có một phong cách gắn bó kể cả khi chưa từng yêu. Cách trả lời theo những gì bạn hình dung, hoặc nghĩ về bạn thân và gia đình thay vì người yêu, là một hướng được dùng rộng rãi và đã được kiểm chứng trong nghiên cứu.",
+        "Hãy trả lời về mẹ bạn, hoặc người đã nuôi dạy bạn như một người mẹ.",
+    },
+    father: {
+      label: "Bố của bạn",
+      instruction:
+        "Hãy trả lời về bố bạn, hoặc người đã nuôi dạy bạn như một người bố.",
+    },
+    friend: {
+      label: "Bạn thân của bạn",
+      instruction: "Hãy trả lời về người bạn thân nhất của bạn.",
     },
   },
   outcomes: {
@@ -209,36 +216,21 @@ export const vi: TestContent = {
     avo16: "Tôi thấy dễ dàng khi dựa vào người yêu.",
     avo17: "Tôi dễ dàng thể hiện sự âu yếm với người ấy.",
     avo18: "Người ấy thật sự hiểu tôi và những nhu cầu của tôi.",
-  },
-  // Với lăng kính "quan hệ thân thiết nói chung", những câu vốn ghi rõ "người
-  // yêu" được đổi thành "người ấy" trung tính (cách diễn đạt của ECR-RS), để
-  // bài test đọc tự nhiên với bạn thân hay gia đình. Các câu còn lại vốn đã
-  // dùng "người ấy" — phần hướng dẫn đã dặn hiểu chữ này theo nghĩa rộng.
-  questionsByPerspective: {
-    general: {
-      anx4: "Tôi lo rằng người ấy sẽ không quan tâm đến tôi nhiều như tôi quan tâm đến họ.",
-      anx8: "Khi tôi bày tỏ tình cảm với người ấy, tôi sợ rằng họ không cảm thấy như vậy với tôi.",
-      anx13: "Đôi khi người ấy thay đổi tình cảm với tôi mà không có lý do rõ ràng.",
-      anx15: "Tôi sợ rằng khi người ấy hiểu rõ tôi, họ sẽ không thích con người thật của tôi.",
-      avo3: "Tôi thấy khó để cho phép mình dựa vào người ấy.",
-      avo4: "Tôi thấy rất thoải mái khi gần gũi với người ấy.",
-      avo5: "Tôi thấy không thoải mái khi mở lòng với người ấy.",
-      avo6: "Tôi không thích quá gần gũi với người ấy.",
-      avo7: "Tôi thấy khó chịu khi người ấy muốn thật gần gũi.",
-      avo11: "Tìm đến người ấy những lúc cần giúp tôi thấy đỡ hơn.",
-      avo14: "Tôi thấy bất an khi người ấy trở nên quá gần gũi với tôi.",
-      avo15: "Tôi thấy thoải mái khi dựa vào người ấy.",
-      avo16: "Tôi thấy dễ dàng khi dựa vào người ấy.",
-    },
+    // Bộ 9 câu ECR-RS, dùng cho các đối tượng không phải người yêu (mẹ/bố/bạn thân).
+    rsAvo1: "Tìm đến người này những lúc cần giúp tôi thấy đỡ hơn.",
+    rsAvo2: "Tôi thường tâm sự những vấn đề và lo lắng của mình với người này.",
+    rsAvo3: "Tôi bàn bạc mọi chuyện với người này.",
+    rsAvo4: "Tôi thấy dễ dàng khi dựa vào người này.",
+    rsAvo5: "Tôi thấy không thoải mái khi mở lòng với người này.",
+    rsAvo6: "Tôi không thích cho người này thấy những gì mình cảm nhận sâu thẳm bên trong.",
+    rsAnx1: "Tôi hay lo rằng người này không thật sự quan tâm đến tôi.",
+    rsAnx2: "Tôi sợ rằng người này có thể bỏ rơi tôi.",
+    rsAnx3: "Tôi lo rằng người này sẽ không quan tâm đến tôi nhiều như tôi quan tâm đến họ.",
   },
   sources: [
     {
       label: "Fraley, Waller & Brennan (2000), thước đo ECR-R (UIUC)",
       url: "http://labs.psychology.illinois.edu/~rcfraley/measures/ecrr.htm",
-    },
-    {
-      label: "Fraley, Heffernan, Vicary & Brumbaugh (2011), ECR-RS, đo gắn bó trong các quan hệ nói chung",
-      url: "https://labs.psychology.illinois.edu/~rcfraley/measures/relstructures.htm",
     },
     {
       label: "Brennan, Clark & Shaver (1998), ECR gốc và mô hình hai thang đo",

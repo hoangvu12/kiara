@@ -25,24 +25,8 @@ export function TestRunnerPage() {
   const [index, setIndex] = useState(0)
   const [hydrated, setHydrated] = useState(false)
 
-  // Resume from saved answers; jump to the first unanswered question.
-  useEffect(() => {
-    if (!test) return
-    const saved = loadAnswers(test.id) ?? {}
-    setAnswers(saved)
-    const firstUnanswered = test.questions.findIndex((q) => saved[q.id] == null)
-    setIndex(firstUnanswered === -1 ? test.questions.length - 1 : firstUnanswered)
-    setHydrated(true)
-  }, [test])
-
-  const total = test?.questions.length ?? 0
-  const answeredCount = useMemo(
-    () => (test ? test.questions.filter((q) => answers[q.id] != null).length : 0),
-    [answers, test]
-  )
-
-  // The chosen answering lens drives both the instruction banner and any
-  // per-lens question wording (e.g. the "general" lens drops romantic phrasing).
+  // The chosen answering lens drives the instruction banner, any per-lens
+  // question wording, and (for tests like attachment) which items get asked.
   const perspectiveId = useMemo(() => {
     if (!test) return undefined
     const pid = loadPerspective(test.id)
@@ -50,6 +34,43 @@ export function TestRunnerPage() {
       test.perspectives?.find((x) => x.id === pid) ?? test.perspectives?.[0]
     return p?.id
   }, [test])
+
+  // The active question set: a per-perspective subset when the test defines one
+  // (e.g. attachment asks 36 romantic items for a partner but 9 for a parent),
+  // otherwise the full list.
+  const questions = useMemo(() => {
+    if (!test) return []
+    const ids = perspectiveId
+      ? test.perspectiveQuestionIds?.[perspectiveId]
+      : undefined
+    if (!ids) return test.questions
+    const byId = new Map(test.questions.map((q) => [q.id, q]))
+    return ids
+      .map((id) => byId.get(id))
+      .filter((q): q is NonNullable<typeof q> => q != null)
+  }, [test, perspectiveId])
+
+  // Resume from saved answers; jump to the first unanswered question. Answers
+  // outside the active set (e.g. from a previously chosen target) are dropped so
+  // they can't leak into scoring.
+  useEffect(() => {
+    if (!test) return
+    const activeIds = new Set(questions.map((q) => q.id))
+    const saved = loadAnswers(test.id) ?? {}
+    const scoped = Object.fromEntries(
+      Object.entries(saved).filter(([id]) => activeIds.has(id))
+    )
+    setAnswers(scoped)
+    const firstUnanswered = questions.findIndex((q) => scoped[q.id] == null)
+    setIndex(firstUnanswered === -1 ? questions.length - 1 : firstUnanswered)
+    setHydrated(true)
+  }, [test, questions])
+
+  const total = questions.length
+  const answeredCount = useMemo(
+    () => questions.filter((q) => answers[q.id] != null).length,
+    [answers, questions]
+  )
 
   const banner = useMemo(() => {
     if (!test) return undefined
@@ -70,7 +91,7 @@ export function TestRunnerPage() {
     )
   }
 
-  const question = test.questions[index]
+  const question = questions[index]
   const questionText =
     (perspectiveId &&
       test.questionsByPerspective?.[perspectiveId]?.[question.id]) ||

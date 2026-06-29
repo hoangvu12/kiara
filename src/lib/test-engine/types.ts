@@ -165,6 +165,15 @@ export type TestDefinition = {
    * phrasing on the few items that hard-code it. Scoring is unaffected.
    */
   questionsByPerspective?: Record<string, Record<string, string>>
+  /**
+   * Optional per-perspective question subset: perspectiveId -> ordered question
+   * ids to actually ask under that lens. When set for the active perspective,
+   * the runner shows only those items (in this order) and scoring averages just
+   * the answered ones. Lets one test carry two instruments — e.g. the full
+   * 36-item romantic ECR-R for a partner, but the short 9-item ECR-RS for a
+   * parent or friend. Perspectives not listed ask the full `questions` set.
+   */
+  perspectiveQuestionIds?: Record<string, string[]>
   /** Pure scoring function: answers (questionId -> raw value) -> result. */
   score: (answers: Record<string, number>) => TestResult
 }
@@ -281,6 +290,8 @@ export type TestStructure = {
   questions: QuestionStructure[]
   contexts?: string[]
   perspectiveIds?: string[]
+  /** Optional per-perspective question subset (see TestDefinition). */
+  perspectiveQuestionIds?: Record<string, string[]>
   quadrant?: QuadrantConfig
   sources: Source[]
   score: (answers: Record<string, number>) => TestResult

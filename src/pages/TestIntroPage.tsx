@@ -35,6 +35,13 @@ export function TestIntroPage() {
   const hasProgress = loadAnswers(test.id) != null
   const selected = perspectives.find((p) => p.id === perspectiveId)
 
+  // Show the count for the chosen target, not the full item pool: a test can
+  // carry more items than any one perspective asks (e.g. attachment holds both
+  // the 36-item ECR-R and the 9-item ECR-RS).
+  const questionCount =
+    (perspectiveId && test.perspectiveQuestionIds?.[perspectiveId]?.length) ||
+    test.questions.length
+
   function choosePerspective(id: string) {
     setPerspectiveId(id)
     savePerspective(test!.id, id)
@@ -60,7 +67,7 @@ export function TestIntroPage() {
             </span>
             <span>·</span>
             <span>
-              {test.questions.length} {t.common.questions}
+              {questionCount} {t.common.questions}
             </span>
           </div>
           <h1 className="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight text-balance">

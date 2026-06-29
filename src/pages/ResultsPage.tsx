@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import { RotateCcw, Sparkles, Compass, Check } from "lucide-react"
 import { getTestBySlug } from "@/lib/test-engine/registry"
-import { clearAnswers, loadAnswers } from "@/lib/test-engine/storage"
+import { clearAnswers, loadAnswers, loadPerspective } from "@/lib/test-engine/storage"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { DimensionQuadrant } from "@/components/DimensionQuadrant"
@@ -20,6 +20,7 @@ export function ResultsPage() {
   const [context, setContext] = useState<string>(test?.contexts?.[0]?.id ?? "")
 
   const answers = useMemo(() => (test ? loadAnswers(test.id) : null), [test])
+  const perspectiveId = useMemo(() => (test ? loadPerspective(test.id) : null), [test])
 
   // Redirect to intro if there's nothing to score.
   useEffect(() => {
@@ -57,6 +58,14 @@ export function ResultsPage() {
     : undefined
 
   const contextText = context ? outcome.contexts?.[context] : undefined
+
+  // Situational contexts (e.g. single / in a relationship / as a parent) are
+  // written for the test's primary lens. Only show them for that lens, so a
+  // non-romantic target (a parent, a friend) doesn't get romantic-life framing.
+  const primaryPerspectiveId = test.perspectives?.[0]?.id
+  const showContexts =
+    !primaryPerspectiveId ||
+    (perspectiveId ?? primaryPerspectiveId) === primaryPerspectiveId
 
   // Per-dimension interpretation: shown for elevated types only, and only when
   // the test supplies the copy. Pairs each elevated bar with a "how this can
@@ -194,7 +203,7 @@ export function ResultsPage() {
         </div>
 
         {/* Context switcher */}
-        {test.contexts && (
+        {test.contexts && showContexts && (
           <div className="mt-8">
             <p className="text-sm font-medium mb-2">{t.results.whatThisLooksLike}</p>
             <div className="flex flex-wrap gap-2">

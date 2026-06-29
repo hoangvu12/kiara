@@ -4,12 +4,12 @@ export const en: TestContent = {
   title: "Attachment Style Test",
   tagline: "Find out how you connect in close relationships",
   description:
-    "Measures your attachment patterns on two scales, anxiety and avoidance, using the ECR-R questionnaire from psychology research.",
+    "Measures your attachment patterns on two scales, anxiety and avoidance. Answer about a romantic partner, a parent, or your best friend.",
   category: "Relationships",
   scientificBasis:
-    "Built on the Experiences in Close Relationships-Revised (ECR-R), one of the most validated adult attachment measures in psychology. Its two scales each tend to score above .90 for internal reliability.",
+    "Built on the Experiences in Close Relationships-Revised (ECR-R), one of the most validated adult attachment measures in psychology; its two scales each tend to score above .90 for internal reliability. For a parent or a friend it switches to the ECR-RS, a short version from the same lab made for relationships that aren't romantic.",
   disclaimer:
-    "This is a tool for learning about yourself, based on a research questionnaire. It is not a clinical diagnosis. Attachment really lives on two sliding scales, so treat the named style as a friendly summary of where you landed. It can also change over time.",
+    "This is a tool for learning about yourself, based on a research questionnaire. It is not a clinical diagnosis. Attachment really lives on two sliding scales, so treat the named style as a friendly summary of where you landed. It can change over time, and it can differ from one relationship to another, so take this as being about the person you had in mind.",
   instructions:
     "Answer for how you generally feel in close romantic relationships, whether past, present, or imagined. If you've never been in one, answer how you think you'd feel.",
   resultKicker: "Your attachment style",
@@ -30,7 +30,7 @@ export const en: TestContent = {
     anxiety: {
       label: "Attachment Anxiety",
       description:
-        "How much you worry about whether a partner is really there for you. High scores mean you often fear being abandoned or not loved enough.",
+        "How much you worry about whether someone you're close to is really there for you. High scores mean you often fear being abandoned or not mattering enough.",
       lowLabel: "Secure about closeness",
       highLabel: "Fears abandonment",
     },
@@ -49,16 +49,23 @@ export const en: TestContent = {
   },
   perspectives: {
     romantic: {
-      label: "Romantic relationships",
+      label: "A romantic partner",
       instruction:
         "Answer for how you generally feel in close romantic relationships, whether past, present, or imagined. If you've never been in one, answer how you think you'd feel.",
     },
-    general: {
-      label: "Close relationships in general",
+    mother: {
+      label: "Your mother",
       instruction:
-        "Answer for how you generally feel with the people closest to you, like close friends and family. Read \"partner\" as whoever you feel closest to.",
-      note:
-        "Your attachment style forms early, from how the people who raised you treated you, so you have one even if you've never dated. Answering based on how you imagine you'd feel, or thinking about close friends and family instead of a partner, is a standard and validated approach in research.",
+        "Answer about your mother, or whoever raised you in a motherly way.",
+    },
+    father: {
+      label: "Your father",
+      instruction:
+        "Answer about your father, or whoever raised you in a fatherly way.",
+    },
+    friend: {
+      label: "Your best friend",
+      instruction: "Answer about your best friend.",
     },
   },
   outcomes: {
@@ -76,7 +83,7 @@ export const en: TestContent = {
         "Comfortable being close and comfortable being apart",
       ],
       growth: [
-        "Remember that a partner with a different style might need more reassurance, or more room, than you do",
+        "Remember that someone with a different style might need more reassurance, or more room, than you do",
         "Keep an eye on your own needs instead of only steadying everyone else",
       ],
       contexts: {
@@ -129,7 +136,7 @@ export const en: TestContent = {
       growth: [
         "Share the small stuff before it piles up into big stuff",
         "When stress makes you want to pull back, try staying in the room instead",
-        "When a partner reaches for you, read it as connection rather than pressure",
+        "When someone reaches for you, read it as connection rather than pressure",
       ],
       contexts: {
         single:
@@ -204,36 +211,21 @@ export const en: TestContent = {
     avo16: "I find it easy to depend on romantic partners.",
     avo17: "It's easy for me to be affectionate with my partner.",
     avo18: "My partner really understands me and my needs.",
-  },
-  // Under the "general" lens, the items that hard-code "romantic partner" are
-  // reworded to the target-neutral "this person" (the ECR-RS phrasing), so the
-  // lens reads naturally for friends/family. All other items already say
-  // "partner", which the lens instruction tells the reader to read broadly.
-  questionsByPerspective: {
-    general: {
-      anx4: "I worry that this person won't care about me as much as I care about them.",
-      anx8: "When I show my feelings for this person, I'm afraid they will not feel the same about me.",
-      anx10: "This person makes me doubt myself.",
-      anx13: "Sometimes this person changes their feelings about me for no apparent reason.",
-      anx15: "I'm afraid that once this person gets to know me, they won't like who I really am.",
-      avo3: "I find it difficult to allow myself to depend on this person.",
-      avo4: "I am very comfortable being close to this person.",
-      avo5: "I don't feel comfortable opening up to this person.",
-      avo6: "I prefer not to be too close to this person.",
-      avo7: "I get uncomfortable when this person wants to be very close.",
-      avo11: "It helps to turn to this person in times of need.",
-      avo15: "I feel comfortable depending on this person.",
-      avo16: "I find it easy to depend on this person.",
-    },
+    // The 9-item ECR-RS, used for the non-romantic targets (mother/father/friend).
+    rsAvo1: "It helps to turn to this person in times of need.",
+    rsAvo2: "I usually discuss my problems and concerns with this person.",
+    rsAvo3: "I talk things over with this person.",
+    rsAvo4: "I find it easy to depend on this person.",
+    rsAvo5: "I don't feel comfortable opening up to this person.",
+    rsAvo6: "I prefer not to show this person how I feel deep down.",
+    rsAnx1: "I often worry that this person doesn't really care for me.",
+    rsAnx2: "I'm afraid that this person may abandon me.",
+    rsAnx3: "I worry that this person won't care about me as much as I care about him or her.",
   },
   sources: [
     {
       label: "Fraley, Waller & Brennan (2000), the ECR-R measure (UIUC)",
       url: "http://labs.psychology.illinois.edu/~rcfraley/measures/ecrr.htm",
-    },
-    {
-      label: "Fraley, Heffernan, Vicary & Brumbaugh (2011), the ECR-RS, for attachment in relationships generally",
-      url: "https://labs.psychology.illinois.edu/~rcfraley/measures/relstructures.htm",
     },
     {
       label: "Brennan, Clark & Shaver (1998), original ECR and the two-scale model",

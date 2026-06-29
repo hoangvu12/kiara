@@ -156,6 +156,13 @@ export type TestDefinition = {
   contexts?: ResultContext[]
   outcomes: Record<string, Outcome>
   quadrant?: QuadrantConfig
+  /**
+   * When true, each dimension is a two-sided axis (e.g. Introversion ↔
+   * Extraversion) rather than a one-directional amount. The results page then
+   * renders a centered slider with a pole label at each end and a marker, so a
+   * low score reads as "strongly the left pole" instead of "barely anything".
+   */
+  bipolar?: boolean
   /** Optional answering lenses (e.g. romantic vs. general relationships). */
   perspectives?: Perspective[]
   /**
@@ -293,6 +300,8 @@ export type TestStructure = {
   /** Optional per-perspective question subset (see TestDefinition). */
   perspectiveQuestionIds?: Record<string, string[]>
   quadrant?: QuadrantConfig
+  /** See TestDefinition.bipolar. Renders dimensions as two-sided sliders. */
+  bipolar?: boolean
   sources: Source[]
   score: (answers: Record<string, number>) => TestResult
 }

@@ -1,9 +1,10 @@
 # Kiara: Psychology & Philosophy Tests
 
 An extensible platform for research-grounded self-assessment tests. The app ships
-with three: a validated **Attachment Style Test** (ECR-R), an ability-based
-**Emotional Intelligence Test** (STEU-B + STEM-B), and a **Childhood Experiences
-Profile** (adapted from the MACE scale).
+with four: a validated **Attachment Style Test** (ECR-R), an ability-based
+**Emotional Intelligence Test** (STEU-B + STEM-B), a **Childhood Experiences
+Profile** (adapted from the MACE scale), and a **16 Personality Types** test (an
+independent Jungian + Big Five instrument, not affiliated with the MBTI®).
 
 ## Stack
 
@@ -44,6 +45,7 @@ src/
     attachment-style/   # ECR-R, Likert
     eq-ability/         # STEU-B + STEM-B, multiple-choice
     childhood-trauma/   # MACE, yes/no severity profile
+    sixteen-types/      # Jungian + Big Five, 16-type Likert
       structure.ts  # language-neutral: ids, scoring, dimensions
       index.ts      # assembles structure + content per language
       content/
@@ -63,6 +65,11 @@ src/
 - **Childhood Experiences Profile** (`/childhood-experiences`, ~8 min). Ten
   maltreatment types from the MACE, each shown as a severity bar with an
   interpretive read when a type is elevated. Yes/no items.
+- **16 Personality Types** (`/16-personality-types`, ~7 min). Four bipolar axes
+  (Mind, Energy, Nature, Tactics) scored from balanced Likert items combine into
+  one of 16 four-letter types. Built on Jung's type theory and the Big Five; an
+  independent instrument, **not** the MBTI®. Scores are shown as sliding scales
+  and the copy is explicit that a near-midpoint axis can tip either way.
 
 Each test is split into a language-neutral **structure** (ids, scoring,
 dimensions, reverse flags) and one **content** block per language. The pages
@@ -107,7 +114,11 @@ The catalog card, question flow, progress, results page, score breakdown, and
 sources all come from the definition. A test can also opt into a few extra
 results-page fields when the defaults don't fit: `resultKicker`, `scoresTitle`,
 `scoresHint`, `insightsTitle`, and `insightsIntro` for copy, and a per-dimension
-`insight` line that only shows when that dimension comes out elevated.
+`insight` line that only shows when that dimension comes out elevated. Set
+`bipolar: true` when the dimensions are two-sided axes (Introversion vs
+Extraversion, say): the results page then renders each one as a centered slider
+with a pole label at each end and the share toward the side you lean to, instead
+of the one-directional fill bar the unipolar tests use.
 
 ## Languages
 
@@ -176,6 +187,22 @@ per-type cutoffs from the paper.
 - Full text with subscale tables and cutoffs: https://pmc.ncbi.nlm.nih.gov/articles/PMC4340880/
 - MACE scoring and translations, Dr. Teicher's lab: https://drteicher.wordpress.com/2017/03/18/maltreatment-and-abuse-chronology-of-exposure-mace-scale-translations/
 - Felitti et al. (1998), the original ACE study: https://pubmed.ncbi.nlm.nih.gov/9635069/
+
+**16 Personality Types.** An **independent** instrument built on the public-domain
+Jungian theory of psychological types and on the **Big Five**: the four axes line
+up with Extraversion, Openness, Agreeableness, and Conscientiousness (McCrae &
+Costa, 1989). The 32 items are original wording (our copyright), not taken from any
+licensed bank, and each axis is scored as a continuous slider — the four-letter
+type is a friendly summary, and the copy is honest that a near-midpoint axis can
+tip either way (the well-known retest-instability critique, Pittenger 1993). This
+test is **not** the MBTI® and has no affiliation with it; "Myers-Briggs" and "MBTI"
+are trademarks of their respective owners and are deliberately avoided. See
+`research/mbti/RESEARCH.md` for the full background.
+
+- Jung (1921), Psychological Types: https://en.wikipedia.org/wiki/Psychological_Types
+- McCrae & Costa (1989), reinterpreting type via the Big Five: https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-6494.1989.tb00759.x
+- Pittenger (1993), on type instability: https://www.researchgate.net/publication/232494957_Cautionary_comments_regarding_the_Myers-Briggs_Type_Indicator
+- Open-Source Psychometrics Project, open Jungian scales: https://openpsychometrics.org/tests/OEJTS/
 
 These are educational self-reflection tools, **not** a clinical diagnosis.
 </content>

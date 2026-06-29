@@ -111,7 +111,67 @@ export function ResultsPage() {
           </p>
           <div className="space-y-5">
             {dims.map((d) => {
-              const colorVar = test.dimensions.find((x) => x.id === d.id)?.colorVar
+              const dimDef = test.dimensions.find((x) => x.id === d.id)
+              const colorVar = dimDef?.colorVar
+              const color = colorVar ? `var(${colorVar})` : "var(--primary)"
+
+              // Two-sided axis (e.g. Introversion ↔ Extraversion): show a pole
+              // label at each end and a marker, with the fill diverging from the
+              // center. A score near 0 then reads as "strongly the left pole",
+              // not "almost empty".
+              if (test.bipolar && dimDef) {
+                const leansHigh = d.score >= 50
+                // Heading is just the axis name; the poles are shown at the
+                // slider ends, so we drop the "X or Y" repeat from the label.
+                const axisName = d.label.split(":")[0].trim()
+                // Percentage toward the side you actually lean to ("94% Hướng
+                // nội"), which reads far clearer than the raw 0-100.
+                const pct = leansHigh ? d.score : 100 - d.score
+                const fillLeft = Math.min(d.score, 50)
+                const fillWidth = Math.abs(d.score - 50)
+                return (
+                  <div key={d.id}>
+                    <span className="font-medium">{axisName}</span>
+                    <div className="mt-2 mb-1.5 flex justify-between text-xs">
+                      <span
+                        className={cn(!leansHigh ? "font-semibold" : "text-muted-foreground")}
+                        style={!leansHigh ? { color } : undefined}
+                      >
+                        {dimDef.lowLabel}
+                        {!leansHigh && <span className="ml-1 tabular-nums">{pct}%</span>}
+                      </span>
+                      <span
+                        className={cn(leansHigh ? "font-semibold" : "text-muted-foreground")}
+                        style={leansHigh ? { color } : undefined}
+                      >
+                        {leansHigh && <span className="mr-1 tabular-nums">{pct}%</span>}
+                        {dimDef.highLabel}
+                      </span>
+                    </div>
+                    <div className="relative h-2.5 w-full rounded-full bg-secondary">
+                      {/* center reference line */}
+                      <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-border" />
+                      {/* fill from center toward the leaning pole */}
+                      <div
+                        className="absolute top-0 h-full rounded-full transition-all duration-700 ease-out"
+                        style={{
+                          left: `${fillLeft}%`,
+                          width: `${fillWidth}%`,
+                          backgroundColor: color,
+                          opacity: 0.55,
+                        }}
+                      />
+                      {/* marker showing where you land */}
+                      <div
+                        className="absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-background transition-all duration-700 ease-out"
+                        style={{ left: `${d.score}%`, backgroundColor: color }}
+                      />
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-2">{d.description}</p>
+                  </div>
+                )
+              }
+
               return (
               <div key={d.id}>
                 <div className="flex items-baseline justify-between mb-1.5">
@@ -125,7 +185,7 @@ export function ResultsPage() {
                     className="h-full rounded-full transition-[width] duration-700 ease-out"
                     style={{
                       width: `${d.score}%`,
-                      backgroundColor: colorVar ? `var(${colorVar})` : "var(--primary)",
+                      backgroundColor: color,
                     }}
                   />
                 </div>

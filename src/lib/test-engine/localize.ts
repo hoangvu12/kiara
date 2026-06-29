@@ -63,6 +63,7 @@ export function resolveTest(
       Object.entries(c.outcomes).map(([id, o]) => [id, { id, ...o }])
     ),
     quadrant: def.quadrant,
+    bipolar: def.bipolar,
     // Wrap scoring so the returned dimension labels are localized too.
     score: (answers) => {
       const result = def.score(answers)

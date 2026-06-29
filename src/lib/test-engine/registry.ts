@@ -3,6 +3,7 @@ import { resolveTest } from "./localize"
 import { attachmentStyleTest } from "@/tests/attachment-style"
 import { eqAbilityTest } from "@/tests/eq-ability"
 import { childhoodTraumaTest } from "@/tests/childhood-trauma"
+import { sixteenTypesTest } from "@/tests/sixteen-types"
 
 /**
  * The master list of tests in the app. To add a new test:
@@ -16,6 +17,7 @@ export const tests: LocalizedTestDefinition[] = [
   attachmentStyleTest,
   eqAbilityTest,
   childhoodTraumaTest,
+  sixteenTypesTest,
 ]
 
 /** Resolve every test into the active locale (for the catalog). */

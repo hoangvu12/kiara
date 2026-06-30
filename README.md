@@ -1,11 +1,12 @@
 # Kiara: Psychology & Philosophy Tests
 
 An extensible platform for research-grounded self-assessment tests. The app ships
-with five: a validated **Attachment Style Test** (ECR-R), an ability-based
+with six: a validated **Attachment Style Test** (ECR-R), an ability-based
 **Emotional Intelligence Test** (STEU-B + STEM-B), a **Childhood Experiences
 Profile** (adapted from the MACE scale), a **16 Personality Types** test (an
-independent Jungian + Big Five instrument, not affiliated with the MBTI®), and a
-**Self-Esteem Test** (the public-domain Rosenberg Self-Esteem Scale).
+independent Jungian + Big Five instrument, not affiliated with the MBTI®), a
+**Self-Esteem Test** (the public-domain Rosenberg Self-Esteem Scale), and a
+**Meaning in Life Test** (the MLQ, scored as presence vs search for meaning).
 
 ## Stack
 
@@ -74,6 +75,11 @@ src/
 - **Self-Esteem** (`/self-esteem`, ~3 min). The Rosenberg Self-Esteem Scale, ten
   Likert items measuring global self-esteem as one score with low / typical / high
   bands. Items are verbatim from the public-domain instrument.
+- **Meaning in Life** (`/meaning-in-life`, ~3 min). The Meaning in Life
+  Questionnaire, ten Likert items split into two separate scores: presence of
+  meaning and search for meaning. The two land you on a presence-by-search quadrant
+  (anchored, deepening, seeking, adrift) rather than one combined number. Items are
+  verbatim from the published instrument.
 
 Each test is split into a language-neutral **structure** (ids, scoring,
 dimensions, reverse flags) and one **content** block per language. The pages
@@ -220,6 +226,22 @@ high bands drawn from the cutoffs commonly used with the scale. Reliability is h
 - Rosenberg (1965), Society and the Adolescent Self-Image: https://en.wikipedia.org/wiki/Rosenberg_self-esteem_scale
 - Using the RSE, with items, scoring, and the public-domain notice (U. Maryland): https://socy.umd.edu/about-us/using-rosenberg-self-esteem-scale
 - Gray-Little, Williams & Hancock (1997), an IRT analysis of the RSE: https://journals.sagepub.com/doi/10.1177/0146167297235001
+
+**Meaning in Life.** The **Meaning in Life Questionnaire (MLQ)** (Steger, Frazier,
+Oishi & Kaler, 2006), one of the standard measures of meaning and purpose. All ten
+items are verbatim from the published instrument, which the author makes free for
+educational and research use (commercial use needs written permission). It has two
+subscales, **presence of meaning** (items 1, 4, 5, 6, 9, with item 9 reverse-keyed)
+and **search for meaning** (items 2, 3, 7, 8, 10), each a mean on the 7-point scale
+(1 = absolutely untrue to 7 = absolutely true). The two scores are deliberately not
+summed: the app splits each at the scale midpoint and reports the presence-by-search
+quadrant. The two-factor structure replicates across samples and cultures, both
+subscales are reliable (internal consistency about .82 to .88), and scores are
+fairly stable over a month (about .70).
+
+- Steger, Frazier, Oishi & Kaler (2006), the MLQ, Journal of Counseling Psychology: https://psycnet.apa.org/doi/10.1037/0022-0167.53.1.80
+- Michael F. Steger's lab, the MLQ and its terms of use: https://www.michaelfsteger.com/?page_id=13
+- Fetzer Institute, MLQ items, scale, and scoring: https://backend.fetzer.org/sites/default/files/images/stories/pdf/selfmeasures/PURPOSE_MEANING-MeaninginLife.pdf
 
 These are educational self-reflection tools, **not** a clinical diagnosis.
 </content>

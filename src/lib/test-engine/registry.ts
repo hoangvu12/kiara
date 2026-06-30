@@ -5,6 +5,7 @@ import { eqAbilityTest } from "@/tests/eq-ability"
 import { childhoodTraumaTest } from "@/tests/childhood-trauma"
 import { sixteenTypesTest } from "@/tests/sixteen-types"
 import { selfEsteemTest } from "@/tests/self-esteem"
+import { meaningInLifeTest } from "@/tests/meaning-in-life"
 
 /**
  * The master list of tests in the app. To add a new test:
@@ -20,6 +21,7 @@ export const tests: LocalizedTestDefinition[] = [
   childhoodTraumaTest,
   sixteenTypesTest,
   selfEsteemTest,
+  meaningInLifeTest,
 ]
 
 /** Resolve every test into the active locale (for the catalog). */

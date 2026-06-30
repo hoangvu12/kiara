@@ -1,13 +1,15 @@
 # Kiara: Psychology & Philosophy Tests
 
 An extensible platform for research-grounded self-assessment tests. The app ships
-with seven: a validated **Attachment Style Test** (ECR-R), an ability-based
+with eight: a validated **Attachment Style Test** (ECR-R), an ability-based
 **Emotional Intelligence Test** (STEU-B + STEM-B), a **Childhood Experiences
 Profile** (adapted from the MACE scale), a **16 Personality Types** test (an
 independent Jungian + Big Five instrument, not affiliated with the MBTI®), a
 **Self-Esteem Test** (the public-domain Rosenberg Self-Esteem Scale), a
-**Meaning in Life Test** (the MLQ, scored as presence vs search for meaning), and
-a **Self-Compassion Test** (Neff's SCS, three bipolar facets plus an overall band).
+**Meaning in Life Test** (the MLQ, scored as presence vs search for meaning), a
+**Self-Compassion Test** (Neff's SCS, three bipolar facets plus an overall band),
+and a **Drive Test** (Carver & White's BIS/BAS Scales, the reward and threat
+systems behind motivation).
 
 ## Stack
 
@@ -87,6 +89,14 @@ src/
   self-judgment, common humanity vs isolation, mindfulness vs over-identification),
   and the named result is the overall band (low / moderate / high) from the grand
   mean of the three. Items are verbatim from the published instrument.
+- **Drive** (`/drive`, ~4 min). The BIS/BAS Scales, 20 Likert items measuring the
+  two motivation systems behind behavior: the reward system that pulls you toward
+  what you want (shown as three facets: drive, fun seeking, reward responsiveness)
+  and the threat system that brakes you before risk. The two systems are reported
+  separately as four bars, never summed, and the named result is one of four
+  motivational profiles from threat sensitivity crossed with overall reward pull
+  (the Go-Getter, the Striver, the Sentinel, the Even Keel). Items are verbatim
+  from the published instrument.
 
 Each test is split into a language-neutral **structure** (ids, scoring,
 dimensions, reverse flags) and one **content** block per language. The pages
@@ -267,6 +277,28 @@ and the six components, so the copy presents both without overclaiming one struc
 - Kristin Neff's site, the SCS, scoring key, and permission to use it: https://self-compassion.org/self-compassion-scales-for-researchers/
 - Neff et al., the SCS book chapter (items, scoring, total-vs-subscale guidance): https://self-compassion.org/wp-content/uploads/2020/02/Chapter-36-Neff-et-al-self-compassion-in-press.pdf
 - Neff (2016), the SCS is a valid and theoretically coherent measure: https://self-compassion.org/wp-content/uploads/2015/12/ScaleMindfulness.pdf
+
+**Drive.** The **BIS/BAS Scales** (Carver & White, 1994), a standard measure of
+the two motivation systems behind behavior. The **Behavioral Activation System
+(BAS)** responds to reward and pulls you toward what you want; the **Behavioral
+Inhibition System (BIS)** responds to threat and brakes you before risk. The
+systems are independent, not two ends of one axis. Carver's empirical factors give
+three BAS facets (drive, items 3, 9, 12, 21; fun seeking, items 5, 10, 15, 20;
+reward responsiveness, items 4, 7, 14, 18, 23) and one BIS scale (items 2, 8, 13,
+16, 19, 22, 24). All 20 scored items are verbatim; the four fillers (1, 6, 11, 17)
+are left out of this self-reflection version. Answered on a 4-point scale, presented
+conventionally as 1 = very false for me to 4 = very true for me so agreeing is the
+high end (Carver prints the anchors in the reverse order); on this direction only the
+two low-threat BIS items, 2 and 22, are reverse-keyed and the rest read trait-positive,
+after which each subscale is a mean where a higher score means more of that drive. This
+is a presentation flip of Carver's anchors and reverse list, and the scores come out
+identical. With no official cutoffs, the app splits BIS
+and overall BAS at the scale midpoint and reports one of four motivational profiles.
+Carver posts the scale publicly and grants free use without charge or permission.
+
+- Carver & White (1994), the BIS/BAS Scales, Journal of Personality and Social Psychology: https://psycnet.apa.org/doi/10.1037/0022-3514.67.2.319
+- Charles Carver's site, the full BIS/BAS scale and scoring key: https://psy.miami.edu/faculty/ccarver/bisbas.html
+- Carver's self-report instruments index, with the no-charge, no-permission notice: https://www.psy.miami.edu/faculty/ccarver/
 
 These are educational self-reflection tools, **not** a clinical diagnosis.
 </content>

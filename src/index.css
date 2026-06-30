@@ -44,6 +44,7 @@
   --chart-energy: oklch(0.55 0.13 290);
   --chart-nature: oklch(0.6 0.12 150);
   --chart-tactics: oklch(0.6 0.1 250);
+  --chart-esteem: oklch(0.62 0.13 70);
 }
 
 .dark {
@@ -84,6 +85,7 @@
   --chart-energy: oklch(0.66 0.14 290);
   --chart-nature: oklch(0.68 0.13 150);
   --chart-tactics: oklch(0.66 0.12 250);
+  --chart-esteem: oklch(0.7 0.14 70);
 }
 
 @theme inline {
@@ -121,6 +123,7 @@
   --color-energy: var(--chart-energy);
   --color-nature: var(--chart-nature);
   --color-tactics: var(--chart-tactics);
+  --color-esteem: var(--chart-esteem);
 
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }

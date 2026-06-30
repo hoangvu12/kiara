@@ -1,10 +1,11 @@
 # Kiara: Psychology & Philosophy Tests
 
 An extensible platform for research-grounded self-assessment tests. The app ships
-with four: a validated **Attachment Style Test** (ECR-R), an ability-based
+with five: a validated **Attachment Style Test** (ECR-R), an ability-based
 **Emotional Intelligence Test** (STEU-B + STEM-B), a **Childhood Experiences
-Profile** (adapted from the MACE scale), and a **16 Personality Types** test (an
-independent Jungian + Big Five instrument, not affiliated with the MBTI®).
+Profile** (adapted from the MACE scale), a **16 Personality Types** test (an
+independent Jungian + Big Five instrument, not affiliated with the MBTI®), and a
+**Self-Esteem Test** (the public-domain Rosenberg Self-Esteem Scale).
 
 ## Stack
 
@@ -70,6 +71,9 @@ src/
   one of 16 four-letter types. Built on Jung's type theory and the Big Five; an
   independent instrument, **not** the MBTI®. Scores are shown as sliding scales
   and the copy is explicit that a near-midpoint axis can tip either way.
+- **Self-Esteem** (`/self-esteem`, ~3 min). The Rosenberg Self-Esteem Scale, ten
+  Likert items measuring global self-esteem as one score with low / typical / high
+  bands. Items are verbatim from the public-domain instrument.
 
 Each test is split into a language-neutral **structure** (ids, scoring,
 dimensions, reverse flags) and one **content** block per language. The pages
@@ -203,6 +207,19 @@ are trademarks of their respective owners and are deliberately avoided. See
 - McCrae & Costa (1989), reinterpreting type via the Big Five: https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-6494.1989.tb00759.x
 - Pittenger (1993), on type instability: https://www.researchgate.net/publication/232494957_Cautionary_comments_regarding_the_Myers-Briggs_Type_Indicator
 - Open-Source Psychometrics Project, open Jungian scales: https://openpsychometrics.org/tests/OEJTS/
+
+**Self-Esteem.** The **Rosenberg Self-Esteem Scale (RSE)** (Rosenberg, 1965), the
+most widely used measure of global self-esteem and still the field standard. All ten
+items are verbatim; the scale was placed in the **public domain** by the University
+of Maryland, so the items are hosted with no licensing constraint. It is
+unidimensional (the five positive and five negative items balance acquiescence bias
+but sum to one score), so the app reports a single 0 to 30 score with low / typical /
+high bands drawn from the cutoffs commonly used with the scale. Reliability is high
+(internal consistency about .77 to .88; two-week test-retest .85 to .88).
+
+- Rosenberg (1965), Society and the Adolescent Self-Image: https://en.wikipedia.org/wiki/Rosenberg_self-esteem_scale
+- Using the RSE, with items, scoring, and the public-domain notice (U. Maryland): https://socy.umd.edu/about-us/using-rosenberg-self-esteem-scale
+- Gray-Little, Williams & Hancock (1997), an IRT analysis of the RSE: https://journals.sagepub.com/doi/10.1177/0146167297235001
 
 These are educational self-reflection tools, **not** a clinical diagnosis.
 </content>

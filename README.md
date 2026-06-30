@@ -1,12 +1,13 @@
 # Kiara: Psychology & Philosophy Tests
 
 An extensible platform for research-grounded self-assessment tests. The app ships
-with six: a validated **Attachment Style Test** (ECR-R), an ability-based
+with seven: a validated **Attachment Style Test** (ECR-R), an ability-based
 **Emotional Intelligence Test** (STEU-B + STEM-B), a **Childhood Experiences
 Profile** (adapted from the MACE scale), a **16 Personality Types** test (an
 independent Jungian + Big Five instrument, not affiliated with the MBTI®), a
-**Self-Esteem Test** (the public-domain Rosenberg Self-Esteem Scale), and a
-**Meaning in Life Test** (the MLQ, scored as presence vs search for meaning).
+**Self-Esteem Test** (the public-domain Rosenberg Self-Esteem Scale), a
+**Meaning in Life Test** (the MLQ, scored as presence vs search for meaning), and
+a **Self-Compassion Test** (Neff's SCS, three bipolar facets plus an overall band).
 
 ## Stack
 
@@ -80,6 +81,12 @@ src/
   meaning and search for meaning. The two land you on a presence-by-search quadrant
   (anchored, deepening, seeking, adrift) rather than one combined number. Items are
   verbatim from the published instrument.
+- **Self-Compassion** (`/self-compassion`, ~6 min). The Self-Compassion Scale,
+  26 Likert items measuring how kindly you respond to yourself when you fail or
+  struggle. Neff's three components render as bipolar sliders (self-kindness vs
+  self-judgment, common humanity vs isolation, mindfulness vs over-identification),
+  and the named result is the overall band (low / moderate / high) from the grand
+  mean of the three. Items are verbatim from the published instrument.
 
 Each test is split into a language-neutral **structure** (ids, scoring,
 dimensions, reverse flags) and one **content** block per language. The pages
@@ -242,6 +249,24 @@ fairly stable over a month (about .70).
 - Steger, Frazier, Oishi & Kaler (2006), the MLQ, Journal of Counseling Psychology: https://psycnet.apa.org/doi/10.1037/0022-0167.53.1.80
 - Michael F. Steger's lab, the MLQ and its terms of use: https://www.michaelfsteger.com/?page_id=13
 - Fetzer Institute, MLQ items, scale, and scoring: https://backend.fetzer.org/sites/default/files/images/stories/pdf/selfmeasures/PURPOSE_MEANING-MeaninginLife.pdf
+
+**Self-Compassion.** The **Self-Compassion Scale (SCS)** (Neff, 2003), the most
+widely used measure of self-compassion. All 26 items are verbatim; Neff grants free
+use for research, teaching, and clinical work (cite the 2003 paper, no registration).
+Answered on a 5-point scale (1 = almost never to 5 = almost always). The scale has
+three components, each a tension between a compassionate and an uncompassionate pole:
+self-kindness vs self-judgment, common humanity vs isolation, and mindfulness vs
+over-identification. The app models each as one bipolar axis (the negative subscales
+reverse-keyed), and the overall self-compassion score is the grand mean of the six
+subscale means, reported as low / moderate / high bands (Neff's rough guide: 2.4 or
+below low, 2.4 to 3.6 moderate, 3.6 or above high; no formal norms exist). Neff
+defends both a single total score (which captures over 90% of the reliable variance)
+and the six components, so the copy presents both without overclaiming one structure.
+
+- Neff (2003), Development and Validation of a Scale to Measure Self-Compassion, Self and Identity: https://self-compassion.org/wp-content/uploads/publications/empirical.article.pdf
+- Kristin Neff's site, the SCS, scoring key, and permission to use it: https://self-compassion.org/self-compassion-scales-for-researchers/
+- Neff et al., the SCS book chapter (items, scoring, total-vs-subscale guidance): https://self-compassion.org/wp-content/uploads/2020/02/Chapter-36-Neff-et-al-self-compassion-in-press.pdf
+- Neff (2016), the SCS is a valid and theoretically coherent measure: https://self-compassion.org/wp-content/uploads/2015/12/ScaleMindfulness.pdf
 
 These are educational self-reflection tools, **not** a clinical diagnosis.
 </content>

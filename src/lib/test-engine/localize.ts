@@ -44,6 +44,7 @@ export function resolveTest(
       dimension: q.dimension,
       reverse: q.reverse,
       text: c.questions[q.id] ?? "",
+      helper: c.questionHelpers?.[q.id],
       options: q.optionIds?.map((oid) => ({
         id: oid,
         text: c.options?.[q.id]?.[oid] ?? "",

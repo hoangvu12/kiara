@@ -160,6 +160,12 @@ export function TestRunnerPage() {
             {questionText}
           </h2>
 
+          {question.helper && (
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed text-pretty">
+              {question.helper}
+            </p>
+          )}
+
           <div className="mt-8">
             {isChoice ? (
               <ChoiceInput

@@ -32,6 +32,13 @@ export type Question = {
   text: string
   /** Which dimension this item loads onto (matches a DimensionDef.id). */
   dimension: string
+  /**
+   * Optional plain-language clarifier shown in small muted text under the item.
+   * Restates an abstract item's MEANING so it can be answered, without hinting
+   * which response is "better" (that would bias the score). Used for emotionally
+   * abstract self-statements where the wording alone may not land.
+   */
+  helper?: string
   /** If true, the answer is reverse-keyed before scoring. */
   reverse?: boolean
   /**
@@ -256,6 +263,12 @@ export type TestContent = {
   outcomes: Record<string, LocalizedOutcome>
   /** Keyed by question id. */
   questions: Record<string, string>
+  /**
+   * Optional per-question clarifier text, keyed by question id. Shown under the
+   * item in small muted text. Only the items that need one appear here; the rest
+   * render with no helper. See Question.helper.
+   */
+  questionHelpers?: Record<string, string>
   /**
    * Localized option text for multiple-choice items:
    * questionId -> (optionId -> text). Only needed for ability/choice tests.

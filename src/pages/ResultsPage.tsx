@@ -230,8 +230,8 @@ export function ResultsPage() {
               x={xDim.score}
               y={yDim.score}
               pointLabel={t.results.youAreHere}
-              xColor="var(--color-avoidance)"
-              yColor="var(--color-anxiety)"
+              xColor={`var(${test.dimensions.find((d) => d.id === xDim.id)!.colorVar ?? "--color-avoidance"})`}
+              yColor={`var(${test.dimensions.find((d) => d.id === yDim.id)!.colorVar ?? "--color-anxiety"})`}
               calmColor="var(--color-secure)"
               xLowLabel={test.dimensions.find((d) => d.id === xDim.id)!.lowLabel}
               xHighLabel={test.dimensions.find((d) => d.id === xDim.id)!.highLabel}
